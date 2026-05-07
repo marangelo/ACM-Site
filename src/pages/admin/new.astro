@@ -1,0 +1,69 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { validateSession } from '../../lib/auth';
+
+const token = Astro.cookies.get('session')?.value;
+const isValid = await validateSession(token);
+
+if (!isValid) {
+  return Astro.redirect('/admin/login');
+}
+
+const error = Astro.url.searchParams.get('error');
+---
+
+<AdminLayout title="Nueva Galería - ACM Admin">
+  <a href="/admin" class="back-link">&larr; Volver al dashboard</a>
+
+  <h1 class="page-title">Nueva Galería</h1>
+
+  {error && <div class="message message-error">{error}</div>}
+
+  <div class="form-card">
+    <form method="POST" action="/api/galleries" class="form">
+      <div class="form-group">
+        <label for="title">Título del evento</label>
+        <input type="text" id="title" name="title" class="form-input" required placeholder="Ej: Día del Niño 2026" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Fecha del evento</label>
+          <input type="date" id="date" name="date" class="form-input" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción (opcional)</label>
+        <textarea id="description" name="description" class="form-input" placeholder="Describe brevemente el evento..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Crear Galería
+      </button>
+    </form>
+  </div>
+</AdminLayout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--primary); text-decoration: none; }
+  .form-card {
+    max-width: 600px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px;
+  }
+  .form-row { max-width: 280px; }
+</style>

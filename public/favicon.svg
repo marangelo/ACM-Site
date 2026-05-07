@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#8B1A1A"/>
+  <rect x="4" y="4" width="92" height="92" rx="14" fill="none" stroke="#C8952A" stroke-width="3"/>
+  <text x="50" y="62" font-family="Arial Black,sans-serif" font-size="36" font-weight="900" fill="#D4A017" text-anchor="middle">ACM</text>
+</svg>

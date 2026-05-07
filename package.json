@@ -1,0 +1,15 @@
+{
+  "name": "acm-gallery",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "node dist/server/entry.mjs",
+    "start": "node dist/server/entry.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.7.0",
+    "@astrojs/node": "^9.2.0"
+  }
+}

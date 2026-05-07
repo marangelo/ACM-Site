@@ -1,0 +1,90 @@
+---
+import Logo from '../components/Logo.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+}
+
+const { title = 'Admin - ACM' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container admin-header-inner">
+      <Logo showSubtitle={false} />
+      <nav class="admin-nav">
+        <a href="/admin" class="nav-link">Dashboard</a>
+        <a href="/admin/new" class="nav-link nav-new">+ Nueva Galería</a>
+        <a href="/api/logout" class="nav-link nav-logout">Cerrar Sesión</a>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <slot />
+    </div>
+  </main>
+</body>
+</html>
+
+<style>
+  .admin-header {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .admin-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-link {
+    padding: 8px 16px;
+    border-radius: var(--radius-xs);
+    font-weight: 500;
+    font-size: 0.88rem;
+    transition: all var(--transition);
+    text-decoration: none;
+    color: var(--text-secondary);
+  }
+  .nav-link:hover {
+    color: var(--primary);
+    background: var(--primary-glow);
+  }
+  .nav-new {
+    background: var(--primary);
+    color: var(--text-on-primary) !important;
+    font-weight: 600;
+  }
+  .nav-new:hover {
+    background: var(--primary-dark) !important;
+  }
+  .nav-logout {
+    border: 1px solid var(--border);
+    color: var(--text-muted) !important;
+  }
+  .nav-logout:hover {
+    border-color: var(--primary);
+    color: var(--primary) !important;
+    background: var(--primary-glow);
+  }
+  .main { padding: 32px 0; }
+</style>

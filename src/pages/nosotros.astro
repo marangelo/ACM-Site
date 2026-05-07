@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Nosotros - ACM">
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <h1>Nosotros</h1>
+      <p>Conoce más sobre la Academia Cristiana Maranatha</p>
+    </div>
+  </section>
+
+  <section class="container section-padding">
+    <div class="about-intro">
+      <span class="section-label">Nuestra Historia</span>
+      <h2 class="section-title">Más de 29 años educando</h2>
+      <div class="about-text">
+        <p>
+          La <strong>Academia Cristiana Maranatha (ACM)</strong> nació en 1995 con la visión de 
+          ofrecer una educación de excelencia fundamentada en principios cristianos. Desde entonces, 
+          hemos formado generaciones de estudiantes comprometidos con su comunidad y su fe.
+        </p>
+        <p>
+          Nuestra institución ofrece educación desde preescolar hasta 8vo grado, con un enfoque 
+          integral que combina el desarrollo académico, deportivo, artístico y espiritual.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-cards">
+      <div class="about-card card">
+        <div class="about-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Misión</h3>
+        <p>Formar estudiantes con excelencia académica y valores cristianos, preparándolos para ser líderes que transformen su comunidad.</p>
+      </div>
+      <div class="about-card card">
+        <div class="about-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 22c4.418 0 8-4.486 8-10S16.418 2 12 2"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Visión</h3>
+        <p>Ser una institución educativa de referencia, reconocida por la calidad de su enseñanza y la formación integral de sus estudiantes.</p>
+      </div>
+      <div class="about-card card">
+        <div class="about-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Valores</h3>
+        <p>Fe, Responsabilidad, Respeto, Honestidad, Solidaridad y Excelencia en todo lo que hacemos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">29+</span>
+          <span class="stat-label">Años de Historia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Estudiantes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Colaboradores</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">100+</span>
+          <span class="stat-label">Eventos Realizados</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-intro {
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+  .about-text {
+    margin-top: 20px;
+  }
+  .about-text p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+
+  .about-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .about-card {
+    padding: 32px 28px;
+    text-align: center;
+  }
+  .about-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--secondary-glow);
+    color: var(--secondary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .about-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .about-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .stats-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--text-on-primary);
+    padding: 56px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    position: relative;
+  }
+  .stat + .stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .stat-number {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--secondary-light);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .about-cards { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .stat-number { font-size: 2.2rem; }
+    .stat + .stat::before { display: none; }
+    .stat { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+    .stat:last-child { border-bottom: none; }
+  }
+</style>

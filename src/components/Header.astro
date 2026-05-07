@@ -1,0 +1,146 @@
+---
+import Logo from './Logo.astro';
+const path = Astro.url.pathname;
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <Logo />
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav-menu">
+      <a href="/" class={"nav-link" + (path === '/' ? ' active' : '')}>Inicio</a>
+      <a href="/#galerias" class="nav-link">Galerías</a>
+      <a href="/nosotros" class={"nav-link" + (path === '/nosotros' ? ' active' : '')}>Nosotros</a>
+      <a href="/contacto" class={"nav-link" + (path === '/contacto' ? ' active' : '')}>Contacto</a>
+      <a href="/admin" class="nav-link nav-admin">Administrar</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    });
+  });
+</script>
+
+<style>
+  .header {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--header-height);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 10;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 8px 16px;
+    border-radius: var(--radius-xs);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+  }
+  .nav-link:hover {
+    color: var(--primary);
+    background: var(--primary-glow);
+  }
+  .nav-link.active {
+    color: var(--primary);
+    font-weight: 600;
+    background: var(--primary-glow);
+  }
+
+  .nav-admin {
+    background: var(--secondary);
+    color: var(--text-on-primary) !important;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+  .nav-admin:hover {
+    background: var(--secondary-dark) !important;
+    color: var(--text-on-primary) !important;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 5;
+    }
+    .nav.active { display: flex; }
+
+    .nav-link {
+      font-size: 1.2rem;
+      padding: 14px 32px;
+      width: auto;
+    }
+    .nav-admin { margin-left: 0; }
+  }
+</style>
