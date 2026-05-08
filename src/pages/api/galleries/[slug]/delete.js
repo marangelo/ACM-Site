@@ -15,6 +15,6 @@ export async function POST({ params, cookies }) {
 
   return new Response(null, {
     status: 302,
-    headers: { Location: '/admin?message=Galería eliminada' }
+    headers: { Location: '/admin?message=' + encodeURIComponent('Galería eliminada') }
   });
 }

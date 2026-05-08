@@ -19,7 +19,7 @@ export async function POST({ request, cookies }) {
   if (!title || !date) {
     return new Response(null, {
       status: 302,
-      headers: { Location: '/admin/new?error=Título y fecha son obligatorios' }
+      headers: { Location: '/admin/new?error=' + encodeURIComponent('Título y fecha son obligatorios') }
     });
   }
 
@@ -27,6 +27,6 @@ export async function POST({ request, cookies }) {
 
   return new Response(null, {
     status: 302,
-    headers: { Location: `/admin/gallery/${gallery.slug}?message=Galería creada exitosamente` }
+    headers: { Location: `/admin/gallery/${gallery.slug}?message=` + encodeURIComponent('Galería creada exitosamente') }
   });
 }

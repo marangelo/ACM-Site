@@ -7,7 +7,7 @@ export async function POST({ request, cookies }) {
   if (!password) {
     return new Response(null, {
       status: 302,
-      headers: { Location: '/admin/login?error=Ingresa la contraseña' }
+      headers: { Location: '/admin/login?error=' + encodeURIComponent('Ingresa la contraseña') }
     });
   }
 
@@ -16,7 +16,7 @@ export async function POST({ request, cookies }) {
   if (!token) {
     return new Response(null, {
       status: 302,
-      headers: { Location: '/admin/login?error=Contraseña incorrecta' }
+      headers: { Location: '/admin/login?error=' + encodeURIComponent('Contraseña incorrecta') }
     });
   }
 
