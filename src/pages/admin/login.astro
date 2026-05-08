@@ -8,7 +8,7 @@ const error = Astro.url.searchParams.get('error');
   <div class="login-page">
     <div class="login-card">
       <div class="login-header">
-        <div class="login-icon">ACM</div>
+        <img src="/logo.png" alt="ACM" class="login-icon" />
         <h1>Iniciar Sesión</h1>
         <p>Acceso administrativo a la galería</p>
       </div>
@@ -55,19 +55,11 @@ const error = Astro.url.searchParams.get('error');
     margin-bottom: 32px;
   }
   .login-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
-    border: 3px solid var(--secondary);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 18px;
-    color: var(--secondary-light);
+    width: auto;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 16px;
     margin: 0 auto 20px;
-    letter-spacing: 1px;
   }
   .login-header h1 {
     font-size: 1.4rem;

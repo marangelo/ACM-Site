@@ -1,13 +1,9 @@
 ---
-const { size = 42, showSubtitle = true } = Astro.props;
-const iconSize = size;
-const fontSize = size * 0.38;
+const { size = 150, showSubtitle = true } = Astro.props;
 ---
 
 <a href="/" class="logo">
-  <div class="logo-icon" style={`width:${iconSize}px;height:${iconSize}px`}>
-    <span class="logo-acm" style={`font-size:${fontSize}px`}>ACM</span>
-  </div>
+  <img src="/logo.png" alt="ACM" class="logo-img" style={`width:${size}px;height:${size}px`} />
   {showSubtitle && (
     <div class="logo-text">
       <span class="logo-name">Academia Cristiana Maranatha</span>
@@ -25,19 +21,10 @@ const fontSize = size * 0.38;
     color: inherit;
     flex-shrink: 0;
   }
-  .logo-icon {
-    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
-    border: 2px solid var(--secondary);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .logo-img {
+    object-fit: contain;
+    border-radius: 8px;
     flex-shrink: 0;
-  }
-  .logo-acm {
-    font-weight: 900;
-    color: var(--secondary-light);
-    letter-spacing: 1px;
   }
   .logo-text {
     display: flex;

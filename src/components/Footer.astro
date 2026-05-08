@@ -3,9 +3,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="footer-logo-text">ACM</span>
-          </div>
+          <img src="/logo.png" alt="ACM" class="footer-logo" />
           <p class="footer-desc">
             Academia Cristiana Maranatha — formando estudiantes con excelencia académica y valores cristianos desde 1995.
           </p>
@@ -97,22 +95,12 @@
   }
 
   .footer-logo {
-    width: 56px;
+    width: auto;
     height: 56px;
-    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
-    border: 2px solid var(--secondary);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: contain;
+    border-radius: 10px;
     margin-bottom: 16px;
     flex-shrink: 0;
-  }
-  .footer-logo-text {
-    font-weight: 900;
-    font-size: 16px;
-    color: var(--secondary-light);
-    letter-spacing: 1px;
   }
 
   .footer-desc {
