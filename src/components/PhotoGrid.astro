@@ -35,9 +35,10 @@ const { images, slug } = Astro.props;
 
 <script>
   let currentIndex = 0;
-  const images = JSON.parse('{JSON.stringify(images.map(i => `/api/image/${slug}/${i}`))}');
+  const items = document.querySelectorAll('.grid-item');
+  const images = Array.from(items).map(el => el.dataset.src);
 
-  document.querySelectorAll('.grid-item').forEach((item, index) => {
+  items.forEach((item, index) => {
     item.addEventListener('click', () => openLightbox(index));
   });
 

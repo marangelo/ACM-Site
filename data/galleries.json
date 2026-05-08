@@ -1,20 +1,11 @@
 {
   "galleries": [
     {
-      "id": "moxgv8dl",
-      "slug": "evento-02",
-      "title": "Evento 02",
-      "date": "2022-01-01",
-      "description": "Evento 02",
-      "coverImage": "",
-      "images": []
-    },
-    {
-      "id": "moxgtszq",
-      "slug": "dia-de-las-madres",
-      "title": "Dia de las madres",
-      "date": "2026-01-01",
-      "description": "Ninguno",
+      "id": "moxh96sw",
+      "slug": "dia-del-maestro",
+      "title": "Dia del Maestro",
+      "date": "20206-01-01",
+      "description": "Dia del maestro",
       "coverImage": "",
       "images": []
     }

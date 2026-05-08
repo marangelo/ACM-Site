@@ -3,6 +3,14 @@ import path from 'node:path';
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'galleries.json');
 
+export function sanitizeSlug(slug) {
+  return slug
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .replace(/\.\./g, '');
+}
+
 export async function getGalleries() {
   try {
     const data = await fs.readFile(DATA_PATH, 'utf-8');
@@ -18,10 +26,7 @@ export async function getGallery(slug) {
 
 export async function createGallery(title, date, description) {
   const galleries = await getGalleries();
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
+  const slug = sanitizeSlug(title);
 
   const newGallery = {
     id: Date.now().toString(36),

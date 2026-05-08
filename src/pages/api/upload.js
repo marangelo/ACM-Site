@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { addImages } from '../../lib/gallery';
+import { addImages, getGallery, sanitizeSlug } from '../../lib/gallery';
 import { validateSession } from '../../lib/auth';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
@@ -17,12 +17,20 @@ export async function POST({ request, cookies }) {
 
   try {
     const formData = await request.formData();
-    const slug = formData.get('slug');
+    const rawSlug = formData.get('slug');
+    const slug = sanitizeSlug(rawSlug);
     const files = formData.getAll('photos');
 
     if (!slug || files.length === 0) {
       return new Response(JSON.stringify({ success: false, error: 'Faltan datos' }), {
         status: 400, headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    const gallery = await getGallery(slug);
+    if (!gallery) {
+      return new Response(JSON.stringify({ success: false, error: 'La galería no existe' }), {
+        status: 404, headers: { 'Content-Type': 'application/json' }
       });
     }
 

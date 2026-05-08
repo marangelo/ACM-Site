@@ -11,12 +11,13 @@ const MIME_TYPES = {
 };
 
 export async function GET({ params }) {
-  const parts = params.path;
-  if (!parts || parts.length === 0) {
+  const raw = params.path;
+  if (!raw) {
     return new Response('Not found', { status: 404 });
   }
 
-  const imagePath = path.join(process.cwd(), 'data', 'uploads', ...parts);
+  const segments = raw.split('/');
+  const imagePath = path.join(process.cwd(), 'data', 'uploads', ...segments);
 
   const normalized = path.normalize(imagePath);
   if (!normalized.startsWith(path.join(process.cwd(), 'data', 'uploads'))) {

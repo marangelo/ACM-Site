@@ -38,7 +38,7 @@ const error = Astro.url.searchParams.get('error');
     <h2 class="upload-title">Subir Fotos</h2>
     <p class="upload-desc">Arrastra tus fotos aquí o haz clic para seleccionar archivos</p>
 
-    <form id="upload-form" class="upload-form">
+    <form id="upload-form" class="upload-form" data-slug={slug}>
       <input type="hidden" name="slug" value={slug} />
 
       <div class="upload-zone" id="drop-zone">
@@ -142,8 +142,9 @@ const error = Astro.url.searchParams.get('error');
     progressFill.style.width = '0%';
     progressText.textContent = 'Subiendo...';
 
+    const slug = document.getElementById('upload-form').dataset.slug;
     const formData = new FormData();
-    formData.append('slug', '{slug}');
+    formData.append('slug', slug);
     selectedFiles.forEach(file => formData.append('photos', file));
 
     try {
