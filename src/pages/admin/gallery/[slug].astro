@@ -35,8 +35,16 @@ const error = Astro.url.searchParams.get('error');
   {error && <div class="message message-error">{error}</div>}
 
   <div class="upload-section">
-    <h2 class="upload-title">Subir Fotos</h2>
-    <p class="upload-desc">Arrastra tus fotos aquí o haz clic para seleccionar archivos</p>
+    <div class="upload-header">
+      <div>
+        <h2 class="upload-title">Subir Fotos</h2>
+        <p class="upload-desc">Arrastra tus fotos aquí o haz clic para seleccionar archivos</p>
+      </div>
+      <button type="submit" class="btn btn-primary" id="upload-btn" form="upload-form" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span id="upload-btn-text">Subir Fotos</span>
+      </button>
+    </div>
 
     <form id="upload-form" class="upload-form" data-slug={slug}>
       <input type="hidden" name="slug" value={slug} />
@@ -60,11 +68,6 @@ const error = Astro.url.searchParams.get('error');
         </div>
         <p id="progress-text">Subiendo...</p>
       </div>
-
-      <button type="submit" class="btn btn-primary" id="upload-btn" disabled>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        <span id="upload-btn-text">Subir Fotos</span>
-      </button>
     </form>
   </div>
 
@@ -123,7 +126,7 @@ const error = Astro.url.searchParams.get('error');
       reader.onload = (e) => {
         const div = document.createElement('div');
         div.className = 'preview-item';
-        div.innerHTML = `<img src="${e.target.result}" alt="${file.name}" /><span class="preview-name">${file.name}</span>`;
+        div.innerHTML = `<img src="${e.target.result}" alt="${file.name}" />`;
         preview.appendChild(div);
       };
       reader.readAsDataURL(file);
@@ -187,8 +190,15 @@ const error = Astro.url.searchParams.get('error');
     padding: 28px;
     margin-bottom: 24px;
   }
+  .upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
   .upload-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
-  .upload-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; }
+  .upload-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0; }
 
   .upload-zone {
     border: 2px dashed var(--border);
