@@ -1,0 +1,248 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getPosts } from '../../../lib/community';
+import { validateSession } from '../../../lib/auth';
+
+const token = Astro.cookies.get('session')?.value;
+const isValid = await validateSession(token);
+
+if (!isValid) {
+  return Astro.redirect('/admin/login');
+}
+
+const posts = await getPosts();
+const message = Astro.url.searchParams.get('message');
+const error = Astro.url.searchParams.get('error');
+---
+
+<AdminLayout title="Comunidad - ACM Admin">
+  <div class="dashboard-header">
+    <div>
+      <h1 class="page-title" style="margin-bottom:4px">Comunidad</h1>
+      <p class="dashboard-sub">Gestiona las publicaciones de la comunidad</p>
+    </div>
+    <a href="/admin/comunidad/new" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Nueva Publicación
+    </a>
+  </div>
+
+  {message && <div class="message message-success">{message}</div>}
+  {error && <div class="message message-error">{error}</div>}
+
+  {posts.length > 0 ? (
+    <div class="admin-table">
+      <div class="table-header">
+        <span class="col-title">Publicación</span>
+        <span class="col-date">Fecha</span>
+        <span class="col-author">Autor</span>
+        <span class="col-status">Estado</span>
+        <span class="col-actions">Acciones</span>
+      </div>
+      {posts.map(p => {
+        const formatDate = new Date(p.date).toLocaleDateString('es-ES', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+        return (
+          <div class="table-row">
+            <span class="col-title">
+              <span class="row-title">{p.title}</span>
+            </span>
+            <span class="col-date">{formatDate}</span>
+            <span class="col-author">{p.author}</span>
+            <span class="col-status">
+              <form method="POST" action={`/api/community/${p.slug}/status`} class="status-form">
+                <input type="hidden" name="status" value={p.status === 'published' ? 'draft' : 'published'} />
+                <button type="submit" class={`status-badge status-${p.status}`}>
+                  {p.status === 'published' ? 'Publicado' : 'Borrador'}
+                </button>
+              </form>
+            </span>
+            <span class="col-actions">
+              <a href={`/admin/comunidad/${p.slug}`} class="btn btn-sm btn-secondary">Editar</a>
+              <form method="POST" action={`/api/community/${p.slug}/delete`} style="display:inline" class="delete-form">
+                <button type="submit" class="btn btn-sm btn-delete">Eliminar</button>
+              </form>
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  ) : (
+    <div class="empty-state" style="padding:80px 20px">
+      <div class="empty-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h2>No hay publicaciones aún</h2>
+      <p>Crea la primera publicación para la comunidad.</p>
+      <a href="/admin/comunidad/new" class="btn btn-primary">Crear Publicación</a>
+    </div>
+  )}
+</AdminLayout>
+
+<style>
+  .dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .dashboard-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .admin-table {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .table-header, .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 120px 180px;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 12px;
+  }
+  .table-header {
+    background: var(--primary);
+    color: var(--text-on-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .table-row {
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.93rem;
+    transition: background var(--transition);
+  }
+  .table-row:last-child { border-bottom: none; }
+  .table-row:hover { background: #f8f8fc; }
+  .row-title { font-weight: 600; }
+
+  .col-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .status-form { margin: 0; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition);
+  }
+  .status-published {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  .status-published:hover {
+    background: #c3e6cb;
+  }
+  .status-draft {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+  }
+  .status-draft:hover {
+    background: #ffeeba;
+  }
+
+  .btn-delete {
+    background: transparent;
+    border: 1px solid #e8a0a0;
+    color: #c0392b;
+    padding: 8px 14px;
+    border-radius: var(--radius-xs);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition);
+  }
+  .btn-delete:hover {
+    background: #c0392b;
+    color: white;
+    border-color: #c0392b;
+  }
+
+  .empty-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .table-header { display: none; }
+    .table-row {
+      grid-template-columns: 1fr;
+      padding: 16px 20px;
+      gap: 8px;
+    }
+    .col-date, .col-author, .col-status { font-size: 0.85rem; color: var(--text-secondary); }
+  }
+</style>
+
+<script>
+  import Swal from 'sweetalert2';
+
+  document.addEventListener('submit', (e) => {
+    const form = e.target.closest('.delete-form');
+    if (!form) return;
+    e.preventDefault();
+
+    Swal.fire({
+      title: '¿Eliminar publicación?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      }
+    });
+  });
+
+  document.querySelectorAll('.status-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      const btn = form.querySelector('.status-badge');
+      const newStatus = form.querySelector('input[name="status"]').value;
+      const label = newStatus === 'published' ? 'publicar' : 'pasar a borrador';
+
+      e.preventDefault();
+      Swal.fire({
+        title: `¿${label.charAt(0).toUpperCase() + label.slice(1)}?`,
+        text: `¿Estás seguro de ${label} esta publicación?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, ' + label,
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          form.submit();
+        }
+      });
+    });
+  });
+</script>

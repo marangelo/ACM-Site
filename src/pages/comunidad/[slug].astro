@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPost } from '../../lib/community';
+
+const { slug } = Astro.params;
+const post = await getPost(slug);
+
+if (!post || post.status !== 'published') {
+  return Astro.redirect('/comunidad');
+}
+
+const formatDate = new Date(post.date).toLocaleDateString('es-ES', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+
+<BaseLayout title={`${post.title} - ACM Comunidad`}>
+  <article class="container" style="padding-top:32px;padding-bottom:64px">
+    <a href="/comunidad" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver a comunidad
+    </a>
+
+    <header class="post-header">
+      <time class="post-date">{formatDate}</time>
+      <h1 class="post-title">{post.title}</h1>
+      {post.author && <span class="post-author">Por {post.author}</span>}
+    </header>
+
+    <div class="post-content">
+      {post.content.split('\n').map(line => (
+        line.trim() ? <p>{line}</p> : <br />
+      ))}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--primary); text-decoration: none; }
+
+  .post-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--border-light);
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .post-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .post-author {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .post-content {
+    max-width: 800px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+  .post-content p {
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .post-title { font-size: 1.6rem; }
+    .post-content { font-size: 1rem; }
+  }
+</style>

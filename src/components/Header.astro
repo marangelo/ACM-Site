@@ -12,6 +12,7 @@ const path = Astro.url.pathname;
     <nav class="nav" id="nav-menu">
       <a href="/" class={"nav-link" + (path === '/' ? ' active' : '')}>Inicio</a>
       <a href="/#galerias" class="nav-link">Galerías</a>
+      <a href="/comunidad" class={"nav-link" + (path === '/comunidad' ? ' active' : '')}>Comunidad</a>
       <a href="/nosotros" class={"nav-link" + (path === '/nosotros' ? ' active' : '')}>Nosotros</a>
       <a href="/contacto" class={"nav-link" + (path === '/contacto' ? ' active' : '')}>Contacto</a>
       <a href="/admin" class="nav-link nav-admin">Administrar</a>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts } from '../../lib/community';
+
+const posts = await getPosts();
+const publishedPosts = posts.filter(p => p.status === 'published');
+---
+
+<BaseLayout title="Comunidad - ACM">
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Comunidad</span>
+      <h1 class="page-title">Comunidad</h1>
+      <p class="page-desc">Conoce las últimas noticias y actividades de nuestra comunidad educativa</p>
+    </div>
+  </section>
+
+  <section class="posts-section section-padding">
+    <div class="container">
+      {publishedPosts.length > 0 ? (
+        <div class="posts-list">
+          {publishedPosts.map(p => {
+            const formatDate = new Date(p.date).toLocaleDateString('es-ES', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            });
+            return (
+              <a href={`/comunidad/${p.slug}`} class="post-card card">
+                <div class="post-body">
+                  <time class="post-date">{formatDate}</time>
+                  <h2 class="post-title">{p.title}</h2>
+                  {p.author && <span class="post-author">Por {p.author}</span>}
+                  <p class="post-excerpt">{p.content.slice(0, 250)}{p.content.length > 250 ? '...' : ''}</p>
+                  <span class="post-read-more">
+                    Leer más
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="empty-state" style="padding:80px 20px;text-align:center">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h2>Pronto tendremos novedades</h2>
+          <p>Estamos preparando contenido para ti. Vuelve pronto.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
+    color: var(--text-on-primary);
+    padding: 60px 0;
+    text-align: center;
+  }
+  .page-hero .section-label {
+    color: var(--secondary-light);
+  }
+  .page-hero .section-label::before,
+  .page-hero .section-label::after {
+    background: var(--secondary-light);
+  }
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .page-desc {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .post-card {
+    display: block;
+    padding: 28px 32px;
+    transition: all var(--transition);
+    border-left: 4px solid var(--primary);
+  }
+  .post-card:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .post-author {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .post-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .post-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .post-read-more svg {
+    transition: transform var(--transition);
+  }
+  .post-card:hover .post-read-more svg {
+    transform: translateX(4px);
+  }
+
+  .empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero { padding: 40px 0; }
+    .page-title { font-size: 1.8rem; }
+    .post-card { padding: 20px 24px; }
+    .post-title { font-size: 1.15rem; }
+  }
+</style>
