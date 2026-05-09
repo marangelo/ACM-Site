@@ -97,8 +97,8 @@ const error = Astro.url.searchParams.get('error');
         <div class="form-group">
           <label for="status">Estado</label>
           <select id="status" name="status" class="form-input form-select">
-            <option value="draft" {post.status === 'draft' ? 'selected' : ''}>Borrador</option>
-            <option value="published" {post.status === 'published' ? 'selected' : ''}>Publicado</option>
+            <option value="draft" selected={post.status === 'draft'}>Borrador</option>
+            <option value="published" selected={post.status === 'published'}>Publicado</option>
           </select>
         </div>
       </div>
