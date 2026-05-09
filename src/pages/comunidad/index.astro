@@ -17,6 +17,7 @@ const publishedPosts = posts.filter(p => p.status === 'published');
           year: 'numeric', month: 'long', day: 'numeric'
         });
         return <>
+          <h2 class="latest-title">Lo último del blog de ACM</h2>
           <article class="post-featured">
             <a href={`/comunidad/${featured.slug}`}>
               <div class="featured-banner">
@@ -104,6 +105,14 @@ const publishedPosts = posts.filter(p => p.status === 'published');
     opacity: 0.85;
     max-width: 560px;
     margin: 0 auto;
+  }
+
+  .latest-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    color: var(--text);
+    letter-spacing: -0.5px;
   }
 
   .post-featured {
