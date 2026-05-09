@@ -53,7 +53,7 @@ const error = Astro.url.searchParams.get('error');
             </span>
             <span class="col-actions">
               <a href={`/admin/gallery/${g.slug}`} class="btn btn-sm btn-secondary">Gestionar</a>
-              <form method="POST" action={`/api/galleries/${g.slug}/delete`} style="display:inline" onsubmit="return confirm('¿Eliminar esta galería y todas sus fotos? Esta acción no se puede deshacer.')">
+              <form method="POST" action={`/api/galleries/${g.slug}/delete`} style="display:inline" class="delete-form">
                 <button type="submit" class="btn btn-sm btn-delete">Eliminar</button>
               </form>
             </span>
@@ -176,3 +176,26 @@ const error = Astro.url.searchParams.get('error');
     .col-date, .col-count { font-size: 0.85rem; color: var(--text-secondary); }
   }
 </style>
+
+<script>
+  import Swal from 'sweetalert2';
+
+  document.addEventListener('submit', (e) => {
+    const form = e.target.closest('.delete-form');
+    if (!form) return;
+    e.preventDefault();
+
+    Swal.fire({
+      title: '¿Eliminar galería?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit();
+      }
+    });
+  });
+</script>

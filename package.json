@@ -9,7 +9,8 @@
     "start": "node dist/server/entry.mjs"
   },
   "dependencies": {
+    "@astrojs/node": "^9.2.0",
     "astro": "^5.7.0",
-    "@astrojs/node": "^9.2.0"
+    "sweetalert2": "^11.26.24"
   }
 }

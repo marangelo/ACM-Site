@@ -1,0 +1,11 @@
+services:
+  astro-app:
+    container_name: cn-acm-app
+    image: node:21.6.1-alpine
+    volumes:
+      - ./.:/app
+    working_dir: /app
+    ports:
+      - '3000:3000'
+    command: ["npm","run","dev","--","--host"]
+
