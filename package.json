@@ -11,6 +11,9 @@
   "dependencies": {
     "@astrojs/node": "^9.2.0",
     "astro": "^5.7.0",
+    "datatables.net": "^2.3.8",
+    "datatables.net-dt": "^2.3.8",
+    "jquery": "^4.0.0",
     "sweetalert2": "^11.26.24"
   }
 }

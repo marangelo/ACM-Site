@@ -1,6 +1,21 @@
 {
   "galleries": [
     {
+      "id": "moyr7xrs",
+      "slug": "feria-escolar-2026-de-ciencia",
+      "title": "Feria Escolar 2026 de Ciencia",
+      "date": "2026-05-05",
+      "description": "Feria Escolar 2026 de Ciencia",
+      "coverImage": "1778355963983-b393.jpg",
+      "images": [
+        "1778355963983-b393.jpg",
+        "1778355963994-izfa.jpg",
+        "1778355964046-fizz.png",
+        "1778355964069-v8e1.png",
+        "1778355964122-7pka.jpg"
+      ]
+    },
+    {
       "id": "moyn2iw8",
       "slug": "galeria-05",
       "title": "Galeria 05",
