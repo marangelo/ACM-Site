@@ -34,7 +34,7 @@ const publishedPosts = posts.filter(p => p.status === 'published');
                   <time class="post-date">{fmt(featured.date)}</time>
                 </div>
                 <h2 class="featured-title">{featured.title}</h2>
-                <p class="featured-excerpt">{featured.content.slice(0, 350)}{featured.content.length > 350 ? '...' : ''}</p>
+                <p class="featured-excerpt">{featured.content.replace(/<[^>]*>/g, '').slice(0, 350)}{featured.content.replace(/<[^>]*>/g, '').length > 350 ? '...' : ''}</p>
                 <span class="post-author">{featured.author}</span>
               </div>
             </a>

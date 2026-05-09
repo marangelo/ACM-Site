@@ -104,8 +104,9 @@ const error = Astro.url.searchParams.get('error');
       </div>
 
       <div class="form-group">
-        <label for="content">Contenido</label>
-        <textarea id="content" name="content" class="form-input form-textarea" required>{post.content}</textarea>
+        <label>Contenido</label>
+        <div id="quill-editor">{post.content}</div>
+        <input type="hidden" name="content" id="content-input" />
       </div>
 
       <div class="form-actions">
@@ -120,7 +121,9 @@ const error = Astro.url.searchParams.get('error');
 </AdminLayout>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     flatpickr('#date', {
@@ -131,6 +134,24 @@ const error = Astro.url.searchParams.get('error');
       altInputClass: 'form-input date-alt-input',
       allowInput: false,
       disableMobile: true,
+    });
+
+    const quill = new Quill('#quill-editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, 3, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link', 'blockquote', 'code-block'],
+          [{ align: [] }],
+          ['clean'],
+        ],
+      },
+    });
+
+    document.querySelector('.form').addEventListener('submit', () => {
+      document.getElementById('content-input').value = quill.root.innerHTML;
     });
 
     const slug = window.location.pathname.split('/').pop();
@@ -308,10 +329,26 @@ const error = Astro.url.searchParams.get('error');
     pointer-events: none;
   }
 
-  .form-textarea {
+  #quill-editor {
     min-height: 400px;
-    resize: vertical;
-    line-height: 1.6;
+  }
+  .ql-toolbar {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-color: var(--border);
+    background: var(--bg);
+  }
+  .ql-container {
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border-color: var(--border);
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  .ql-editor {
+    min-height: 360px;
+    line-height: 1.8;
+  }
+  .ql-editor:focus {
+    box-shadow: none;
   }
 
   .form-actions {

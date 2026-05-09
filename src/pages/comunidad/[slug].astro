@@ -38,11 +38,7 @@ const formatDate = new Date(post.date).toLocaleDateString('es-ES', {
       {post.author && <span class="post-author">Por {post.author}</span>}
     </header>
 
-    <div class="post-content">
-      {post.content.split('\n').map(line => (
-        line.trim() ? <p>{line}</p> : <br />
-      ))}
-    </div>
+    <div class="post-content" set:html={post.content}></div>
   </article>
 </BaseLayout>
 
@@ -126,6 +122,41 @@ const formatDate = new Date(post.date).toLocaleDateString('es-ES', {
   .post-content p {
     margin-bottom: 16px;
   }
+  .post-content h1 { font-size: 1.8rem; font-weight: 800; margin: 28px 0 12px; color: var(--text); }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; margin: 24px 0 10px; color: var(--text); }
+  .post-content h3 { font-size: 1.25rem; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
+  .post-content ul, .post-content ol { padding-left: 24px; margin-bottom: 16px; }
+  .post-content li { margin-bottom: 6px; }
+  .post-content a { color: var(--primary); font-weight: 600; }
+  .post-content a:hover { text-decoration: underline; }
+  .post-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding: 12px 20px;
+    margin: 16px 0;
+    background: var(--primary-glow);
+    border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+    font-style: italic;
+    color: var(--text);
+  }
+  .post-content code {
+    background: var(--bg-section);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+  }
+  .post-content pre {
+    background: #1e1e2a;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin: 16px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .post-content pre code { background: none; padding: 0; color: inherit; }
+  .post-content img { max-width: 100%; border-radius: var(--radius-sm); margin: 16px 0; }
 
   @media (max-width: 768px) {
     .post-title { font-size: 1.6rem; }
