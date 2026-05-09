@@ -40,6 +40,7 @@ export async function createPost(title, content, author, date) {
     author,
     date,
     status: 'draft',
+    banner: '',
     createdAt: new Date().toISOString(),
   };
 
@@ -48,7 +49,7 @@ export async function createPost(title, content, author, date) {
   return post;
 }
 
-export async function updatePost(slug, { title, content, author, date }) {
+export async function updatePost(slug, { title, content, author, date, status }) {
   const posts = await getPosts();
   const idx = posts.findIndex(p => p.slug === slug);
   if (idx === -1) return null;
@@ -57,7 +58,18 @@ export async function updatePost(slug, { title, content, author, date }) {
   if (content !== undefined) posts[idx].content = content;
   if (author !== undefined) posts[idx].author = author;
   if (date !== undefined) posts[idx].date = date;
+  if (status !== undefined && (status === 'draft' || status === 'published')) posts[idx].status = status;
 
+  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
+  return posts[idx];
+}
+
+export async function setPostBanner(slug, filename) {
+  const posts = await getPosts();
+  const idx = posts.findIndex(p => p.slug === slug);
+  if (idx === -1) return null;
+
+  posts[idx].banner = filename;
   await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
   return posts[idx];
 }
@@ -72,8 +84,23 @@ export async function setPostStatus(slug, status) {
   return posts[idx];
 }
 
+export async function deleteBanner(slug) {
+  const posts = await getPosts();
+  const idx = posts.findIndex(p => p.slug === slug);
+  if (idx === -1) return;
+
+  const bannerDir = path.join(process.cwd(), 'data', 'uploads', 'comunidad', 'banners', slug);
+  await fsp.rm(bannerDir, { recursive: true, force: true });
+
+  posts[idx].banner = '';
+  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
+}
+
 export async function deletePost(slug) {
   const posts = await getPosts();
   const filtered = posts.filter(p => p.slug !== slug);
   await fsp.writeFile(DATA_PATH, JSON.stringify({ posts: filtered }, null, 2));
+
+  const bannerDir = path.join(process.cwd(), 'data', 'uploads', 'comunidad', 'banners', slug);
+  await fsp.rm(bannerDir, { recursive: true, force: true });
 }

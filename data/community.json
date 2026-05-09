@@ -1,13 +1,55 @@
 {
   "posts": [
     {
+      "id": "moyow7ev",
+      "slug": "publicacion-05",
+      "title": "Publicacion 05",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "Autor",
+      "date": "2026-05-09",
+      "status": "published",
+      "createdAt": "2026-05-09T18:40:49.543Z",
+      "banner": "banner.jpg"
+    },
+    {
+      "id": "moyovpzt",
+      "slug": "publicacion-04",
+      "title": "Publicacion 04",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "Autor",
+      "date": "2026-05-01",
+      "status": "published",
+      "createdAt": "2026-05-09T18:40:26.969Z",
+      "banner": "banner.jpg"
+    },
+    {
+      "id": "moyov8ts",
+      "slug": "publicacion-03",
+      "title": "Publicacion 03",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "Autor",
+      "date": "2026-05-20",
+      "status": "published",
+      "createdAt": "2026-05-09T18:40:04.720Z"
+    },
+    {
+      "id": "moyoufbl",
+      "slug": "publicacion-021",
+      "title": "Publicacion 021",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "a",
+      "date": "2026-05-03",
+      "status": "published",
+      "createdAt": "2026-05-09T18:39:26.481Z"
+    },
+    {
       "id": "moynwpq4",
       "slug": "paseo-gramanada-2026",
       "title": "Paseo Gramanada 2026",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "author": "Autor",
       "date": "2026-05-30",
-      "status": "draft",
+      "status": "published",
       "createdAt": "2026-05-09T18:13:13.660Z"
     }
   ]

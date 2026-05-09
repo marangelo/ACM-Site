@@ -17,29 +17,63 @@ const publishedPosts = posts.filter(p => p.status === 'published');
 
   <section class="posts-section section-padding">
     <div class="container">
-      {publishedPosts.length > 0 ? (
-        <div class="posts-list">
-          {publishedPosts.map(p => {
-            const formatDate = new Date(p.date).toLocaleDateString('es-ES', {
-              year: 'numeric', month: 'long', day: 'numeric'
-            });
-            return (
-              <a href={`/comunidad/${p.slug}`} class="post-card card">
-                <div class="post-body">
-                  <time class="post-date">{formatDate}</time>
-                  <h2 class="post-title">{p.title}</h2>
-                  {p.author && <span class="post-author">Por {p.author}</span>}
-                  <p class="post-excerpt">{p.content.slice(0, 250)}{p.content.length > 250 ? '...' : ''}</p>
-                  <span class="post-read-more">
-                    Leer más
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                  </span>
+      {publishedPosts.length > 0 ? (() => {
+        const featured = publishedPosts[0];
+        const rest = publishedPosts.slice(1);
+        const fmt = d => new Date(d).toLocaleDateString('es-ES', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        return <>
+          <article class="post-featured">
+            <a href={`/comunidad/${featured.slug}`}>
+              <div class="featured-banner">
+                {featured.banner ? (
+                  <img src={`/api/comunidad/${featured.slug}/banner`} alt={featured.title} loading="lazy" />
+                ) : (
+                  <div class="banner-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span>Sin imagen</span>
+                  </div>
+                )}
+              </div>
+              <div class="featured-body">
+                <div class="post-meta">
+                  <time class="post-date">{fmt(featured.date)}</time>
                 </div>
-              </a>
-            );
-          })}
-        </div>
-      ) : (
+                <h2 class="featured-title">{featured.title}</h2>
+                <p class="featured-excerpt">{featured.content.slice(0, 350)}{featured.content.length > 350 ? '...' : ''}</p>
+                <span class="post-author">{featured.author}</span>
+              </div>
+            </a>
+          </article>
+
+          {rest.length > 0 && (
+            <div class="posts-grid">
+              {rest.map(p => (
+                <article class="post-card">
+                  <a href={`/comunidad/${p.slug}`}>
+                    <div class="card-banner">
+                      {p.banner ? (
+                        <img src={`/api/comunidad/${p.slug}/banner`} alt={p.title} loading="lazy" />
+                      ) : (
+                        <div class="banner-placeholder">
+                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                          <span>Sin imagen</span>
+                        </div>
+                      )}
+                    </div>
+                    <div class="post-body">
+                      <time class="post-date">{fmt(p.date)}</time>
+                      <h3 class="post-title">{p.title}</h3>
+                      <span class="post-author">{p.author}</span>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
+        </>;
+      })() : (
         <div class="empty-state" style="padding:80px 20px;text-align:center">
           <div class="empty-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -79,70 +113,149 @@ const publishedPosts = posts.filter(p => p.status === 'published');
     margin: 0 auto;
   }
 
-  .posts-list {
+  .post-featured {
+    margin-bottom: 48px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .post-featured:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .post-featured a { text-decoration: none; color: inherit; }
+
+  .featured-banner {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+  .featured-banner img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .post-featured:hover .featured-banner img {
+    transform: scale(1.03);
+  }
+
+  .banner-placeholder {
+    width: 100%;
+    height: 260px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    max-width: 800px;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--bg-section);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .banner-placeholder svg { opacity: 0.3; }
+
+  .featured-body {
+    padding: 32px 40px 36px;
+  }
+  .featured-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+  .post-featured:hover .featured-title {
+    color: var(--primary);
+  }
+  .featured-excerpt {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
   }
 
   .post-card {
-    display: block;
-    padding: 28px 32px;
-    transition: all var(--transition);
-    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    transition: box-shadow var(--transition), transform var(--transition);
   }
   .post-card:hover {
-    transform: translateX(4px);
     box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+  .post-card a { text-decoration: none; color: inherit; }
+
+  .card-banner {
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+  }
+  .card-banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .post-card:hover .card-banner img {
+    transform: scale(1.05);
+  }
+
+  .post-card .post-body {
+    padding: 20px 24px 24px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
   }
 
   .post-date {
     display: block;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--secondary);
     font-weight: 600;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
   }
 
   .post-title {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 8px;
     color: var(--text);
     line-height: 1.3;
+    transition: color var(--transition);
+  }
+  .post-card:hover .post-title {
+    color: var(--primary);
   }
 
   .post-author {
-    display: inline-block;
+    display: block;
     font-size: 0.85rem;
     color: var(--text-muted);
-    margin-bottom: 12px;
-    font-style: italic;
+    font-weight: 500;
   }
-
-  .post-excerpt {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .post-read-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary);
-  }
-  .post-read-more svg {
-    transition: transform var(--transition);
-  }
-  .post-card:hover .post-read-more svg {
-    transform: translateX(4px);
+  .post-author::before {
+    content: 'por ';
+    font-weight: 400;
   }
 
   .empty-icon {
@@ -157,10 +270,26 @@ const publishedPosts = posts.filter(p => p.status === 'published');
     color: var(--text-muted);
   }
 
+  @media (max-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
   @media (max-width: 768px) {
     .page-hero { padding: 40px 0; }
     .page-title { font-size: 1.8rem; }
-    .post-card { padding: 20px 24px; }
-    .post-title { font-size: 1.15rem; }
+    .featured-title { font-size: 1.35rem; }
+    .featured-body { padding: 24px; }
+    .featured-banner img { height: 220px; }
+    .featured-excerpt { font-size: 0.95rem; }
+    .post-card .post-body { padding: 16px 20px 20px; }
+    .card-banner img { height: 160px; }
+    .post-title { font-size: 1.05rem; }
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
   }
 </style>

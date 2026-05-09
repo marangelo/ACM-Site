@@ -16,6 +16,7 @@ export async function POST({ params, request, cookies }) {
   const content = formData.get('content');
   const author = formData.get('author');
   const date = formData.get('date');
+  const status = formData.get('status');
 
   if (!title || !content) {
     return new Response(null, {
@@ -24,7 +25,7 @@ export async function POST({ params, request, cookies }) {
     });
   }
 
-  await updatePost(params.slug, { title, content, author, date });
+  await updatePost(params.slug, { title, content, author, date, status });
 
   return new Response(null, {
     status: 302,
