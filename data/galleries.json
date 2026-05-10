@@ -1,6 +1,17 @@
 {
   "galleries": [
     {
+      "id": "moz1yi4q",
+      "slug": "feria-de-ciencia-2026",
+      "title": "Feria de ciencia 2026",
+      "date": "2020-05-31",
+      "description": "En la feria se incluira mucho experimentos interesantes hechos por los nino pequeno y grandes.",
+      "coverImage": "1778374006756-w9m2.jpg",
+      "images": [
+        "1778374006756-w9m2.jpg"
+      ]
+    },
+    {
       "id": "moyr7xrs",
       "slug": "feria-escolar-2026-de-ciencia",
       "title": "Feria Escolar 2026 de Ciencia",

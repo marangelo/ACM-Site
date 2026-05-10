@@ -5,49 +5,163 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Nosotros - ACM">
   <section class="page-hero">
     <div class="container page-hero-content">
-      <h1>Nosotros</h1>
-      <p>Conoce más sobre la Academia Cristiana Maranatha</p>
+      <span class="hero-badge">Quiénes Somos</span>
+      <h1>Academia Cristiana <span class="hero-highlight">Maranatha</span></h1>
+      <p>Más de 29 años formando estudiantes con excelencia académica y valores cristianos</p>
     </div>
   </section>
 
-  <section class="container section-padding">
-    <div class="about-intro">
-      <span class="section-label">Nuestra Historia</span>
-      <h2 class="section-title">Más de 29 años educando</h2>
-      <div class="about-text">
-        <p>
-          La <strong>Academia Cristiana Maranatha (ACM)</strong> nació en 1995 con la visión de 
-          ofrecer una educación de excelencia fundamentada en principios cristianos. Desde entonces, 
-          hemos formado generaciones de estudiantes comprometidos con su comunidad y su fe.
-        </p>
-        <p>
-          Nuestra institución ofrece educación desde preescolar hasta 8vo grado, con un enfoque 
-          integral que combina el desarrollo académico, deportivo, artístico y espiritual.
-        </p>
+  <section class="section-padding">
+    <div class="container">
+      <div class="history-grid">
+        <div class="history-content">
+          <span class="section-label">Nuestra Historia</span>
+          <h2 class="section-title">Formando líderes desde 1995</h2>
+          <p>
+            La <strong>Academia Cristiana Maranatha (ACM)</strong> nació con la visión de 
+            ofrecer una educación de excelencia fundamentada en principios cristianos. Desde entonces, 
+            hemos formado generaciones de estudiantes comprometidos con su comunidad y su fe.
+          </p>
+          <p>
+            Ofrecemos educación desde preescolar hasta 8vo grado, con un enfoque 
+            integral que combina el desarrollo académico, deportivo, artístico y espiritual.
+          </p>
+        </div>
+        <div class="history-highlight">
+          <div class="highlight-card">
+            <span class="highlight-number">29+</span>
+            <span class="highlight-label">Años educando</span>
+          </div>
+          <div class="highlight-card">
+            <span class="highlight-number">500+</span>
+            <span class="highlight-label">Estudiantes</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="about-cards">
-      <div class="about-card card">
-        <div class="about-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Misión</h3>
-        <p>Formar estudiantes con excelencia académica y valores cristianos, preparándolos para ser líderes que transformen su comunidad.</p>
+  <section class="mission-section section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Nuestra Filosofía</span>
+        <h2 class="section-title">Misión, Visión y Valores</h2>
+        <p class="section-desc">Los pilares que guían nuestra labor educativa cada día</p>
       </div>
-      <div class="about-card card">
-        <div class="about-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 22c4.418 0 8-4.486 8-10S16.418 2 12 2"/><path d="M2 12h20"/></svg>
-        </div>
-        <h3>Visión</h3>
-        <p>Ser una institución educativa de referencia, reconocida por la calidad de su enseñanza y la formación integral de sus estudiantes.</p>
+
+      <div class="mission-grid">
+        <article class="mission-card">
+          <figure class="mission-figure">
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Misión" loading="lazy" />
+            <figcaption>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </figcaption>
+          </figure>
+          <div class="mission-body">
+            <h3>Misión</h3>
+            <p>Formar estudiantes con excelencia académica y valores cristianos, preparándolos para ser líderes que transformen su comunidad.</p>
+          </div>
+        </article>
+        <article class="mission-card">
+          <figure class="mission-figure">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Visión" loading="lazy" />
+            <figcaption>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 22c4.418 0 8-4.486 8-10S16.418 2 12 2"/><path d="M2 12h20"/></svg>
+            </figcaption>
+          </figure>
+          <div class="mission-body">
+            <h3>Visión</h3>
+            <p>Ser una institución educativa de referencia, reconocida por la calidad de su enseñanza y la formación integral de sus estudiantes.</p>
+          </div>
+        </article>
+        <article class="mission-card">
+          <figure class="mission-figure">
+            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80" alt="Valores" loading="lazy" />
+            <figcaption>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </figcaption>
+          </figure>
+          <div class="mission-body">
+            <h3>Valores</h3>
+            <p>Fe, Responsabilidad, Respeto, Honestidad, Solidaridad y Excelencia en todo lo que hacemos.</p>
+          </div>
+        </article>
       </div>
-      <div class="about-card card">
-        <div class="about-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+  </section>
+
+  <section class="values-section section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Nuestros Valores</span>
+        <h2 class="section-title">Formación con Valores Cristianos</h2>
+        <p class="section-desc">En ACM, cada día cultivamos principios que fortalecen el carácter y el espíritu de nuestros estudiantes</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-image">
+            <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&q=80" alt="Fe" loading="lazy" />
+            <div class="value-overlay">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <span>Fe</span>
+            </div>
+          </div>
+          <div class="value-body">
+            <h3>Fe</h3>
+            <p>Fundamos nuestra enseñanza en la palabra de Dios, guiando a cada estudiante a desarrollar una relación personal con Cristo y a vivir según sus enseñanzas.</p>
+          </div>
         </div>
-        <h3>Valores</h3>
-        <p>Fe, Responsabilidad, Respeto, Honestidad, Solidaridad y Excelencia en todo lo que hacemos.</p>
+
+        <div class="value-card value-card--reverse">
+          <div class="value-image">
+            <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80" alt="Solidaridad" loading="lazy" />
+            <div class="value-overlay">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span>Solidaridad</span>
+            </div>
+          </div>
+          <div class="value-body">
+            <h3>Solidaridad</h3>
+            <p>Fomentamos el amor al prójimo y el servicio a los demás, formando estudiantes sensibles a las necesidades de su comunidad y dispuestos a ayudar.</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-image">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Excelencia" loading="lazy" />
+            <div class="value-overlay">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              </div>
+              <span>Excelencia</span>
+            </div>
+          </div>
+          <div class="value-body">
+            <h3>Excelencia</h3>
+            <p>Buscamos la gloria de Dios en todo lo que hacemos, esforzándonos por alcanzar el más alto nivel académico y personal en cada área.</p>
+          </div>
+        </div>
+
+        <div class="value-card value-card--reverse">
+          <div class="value-image">
+            <img src="https://images.unsplash.com/photo-1526976668912-1a811878dd6d?w=600&q=80" alt="Honestidad" loading="lazy" />
+            <div class="value-overlay">
+              <div class="value-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span>Honestidad</span>
+            </div>
+          </div>
+          <div class="value-body">
+            <h3>Honestidad</h3>
+            <p>Inculcamos la integridad como pilar fundamental, enseñando a nuestros alumnos a vivir con transparencia, verdad y rectitud.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -77,48 +191,252 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .about-intro {
-    max-width: 720px;
-    margin-bottom: 48px;
+  .page-hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/bg-acm.jpg') center/cover no-repeat;
+    color: var(--text-on-primary);
+    padding: 80px 0;
+    text-align: center;
   }
-  .about-text {
-    margin-top: 20px;
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
-  .about-text p {
+  .page-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero-highlight {
+    background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .page-hero p {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .history-content .section-label {
+    margin-bottom: 12px;
+  }
+  .history-content .section-title {
+    margin-bottom: 20px;
+  }
+  .history-content p {
     font-size: 1.02rem;
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 14px;
   }
+  .history-highlight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .highlight-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text-on-primary);
+    padding: 36px 24px;
+    border-radius: var(--radius);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .highlight-card:last-child {
+    background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+  }
+  .highlight-number {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--secondary-light);
+    line-height: 1;
+  }
+  .highlight-card:last-child .highlight-number {
+    color: white;
+  }
+  .highlight-label {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    font-weight: 500;
+  }
 
-  .about-cards {
+  .mission-section {
+    background: var(--bg-section);
+  }
+  .mission-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
   }
-  .about-card {
-    padding: 32px 28px;
+  .mission-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .mission-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+  .mission-figure {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    margin: 0;
+  }
+  .mission-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .mission-card:hover .mission-figure img {
+    transform: scale(1.06);
+  }
+  .mission-figure figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mission-figure figcaption svg {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+  .mission-body {
+    padding: 24px 28px 28px;
     text-align: center;
   }
-  .about-card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: var(--secondary-glow);
-    color: var(--secondary-dark);
+  .mission-body h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .mission-body p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .values-section {
+    background: var(--bg);
+  }
+  .values-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .value-card {
+    display: flex;
+    align-items: stretch;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .value-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+  .value-card--reverse {
+    flex-direction: row-reverse;
+  }
+  .value-image {
+    flex: 0 0 280px;
+    position: relative;
+    overflow: hidden;
+  }
+  .value-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .value-card:hover .value-image img {
+    transform: scale(1.08);
+  }
+  .value-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(122,36,36,0.85), rgba(74,14,14,0.9));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s ease;
+  }
+  .value-card:nth-child(3) .value-overlay {
+    background: linear-gradient(135deg, rgba(180,130,30,0.85), rgba(140,100,20,0.9));
+  }
+  .value-card:hover .value-overlay {
+    opacity: 0;
+  }
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 18px;
   }
-  .about-card h3 {
-    font-size: 1.2rem;
+  .value-body {
+    flex: 1;
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .value-body h3 {
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 10px;
   }
-  .about-card p {
-    font-size: 0.92rem;
+  .value-card:nth-child(3) .value-body h3 {
+    color: var(--secondary-dark);
+  }
+  .value-body p {
+    font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.7;
   }
@@ -126,7 +444,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .stats-section {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: var(--text-on-primary);
-    padding: 56px 0;
+    padding: 60px 0;
   }
   .stats-grid {
     display: grid;
@@ -137,8 +455,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .stat {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding: 16px;
+    gap: 8px;
+    padding: 20px 16px;
     position: relative;
   }
   .stat + .stat::before {
@@ -162,12 +480,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 500;
   }
 
+  @media (max-width: 1024px) {
+    .history-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .history-highlight {
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .mission-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  }
+
   @media (max-width: 768px) {
-    .about-cards { grid-template-columns: 1fr; }
+    .page-hero { padding: 56px 0; }
+    .page-hero h1 { font-size: 2rem; }
+    .page-hero p { font-size: 1rem; }
+
+    .mission-grid { grid-template-columns: 1fr; gap: 20px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .stat-number { font-size: 2.2rem; }
     .stat + .stat::before { display: none; }
     .stat { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
     .stat:last-child { border-bottom: none; }
+
+    .value-card,
+    .value-card--reverse {
+      flex-direction: column;
+    }
+    .value-image {
+      flex: none;
+      width: 100%;
+      height: 200px;
+    }
+    .value-overlay {
+      opacity: 1 !important;
+    }
+    .value-body {
+      padding: 24px 20px !important;
+    }
   }
 </style>
