@@ -4,7 +4,7 @@ import GalleryCard from '../components/GalleryCard.astro';
 import { getGalleries } from '../lib/gallery';
 
 const galleries = await getGalleries();
-const latestGalleries = galleries.slice(0, 6);
+const latestGalleries = galleries.slice(0, 3);
 ---
 
 <BaseLayout title="ACM - Academia Cristiana Maranatha">
@@ -76,33 +76,21 @@ const latestGalleries = galleries.slice(0, 6);
 
       {galleries.length > 0 ? (
         <>
-          <div class="carousel">
-            <div class="carousel-track">
-              {latestGalleries.map(g => (
-                <GalleryCard
-                  title={g.title}
-                  slug={g.slug}
-                  date={g.date}
-                  description={g.description}
-                  coverImage={g.coverImage}
-                  imageCount={g.images.length}
-                />
-              ))}
-              {latestGalleries.map(g => (
-                <GalleryCard
-                  title={g.title}
-                  slug={g.slug}
-                  date={g.date}
-                  description={g.description}
-                  coverImage={g.coverImage}
-                  imageCount={g.images.length}
-                />
-              ))}
-            </div>
+          <div class="gallery-grid">
+            {latestGalleries.map(g => (
+              <GalleryCard
+                title={g.title}
+                slug={g.slug}
+                date={g.date}
+                description={g.description}
+                coverImage={g.coverImage}
+                imageCount={g.images.length}
+              />
+            ))}
           </div>
-          {galleries.length > 6 && (
+          {galleries.length > 3 && (
             <div class="gallery-cta">
-              <a href="/#galerias" class="btn btn-primary">Ver Todas las Galerías</a>
+              <a href="/galerias" class="btn btn-primary">Ver Todas las Galerías</a>
             </div>
           )}
         </>
@@ -298,23 +286,10 @@ const latestGalleries = galleries.slice(0, 6);
   }
   .section-heading .section-title { margin-bottom: 8px; }
 
-  .carousel {
-    overflow: hidden;
-    width: 100%;
-    mask-image: linear-gradient(to right, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 95%, transparent 100%);
-  }
-  .carousel-track {
-    display: flex;
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    width: max-content;
-    will-change: transform;
-  }
-  .carousel-track.paused {
-    animation-play-state: paused;
-  }
-  .carousel-track > :global(.gallery-card) {
-    flex: 0 0 340px;
   }
   .gallery-cta {
     text-align: center;
@@ -378,39 +353,10 @@ const latestGalleries = galleries.slice(0, 6);
     .hero-content { padding: 24px 0 40px; }
     .hero-wave svg { height: 40px; }
     .features-grid { grid-template-columns: 1fr; gap: 20px; }
-    .carousel-track > :global(.gallery-card) { flex: 0 0 280px; }
-    .carousel-track { gap: 16px; }
+    .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
     .cta-content h2 { font-size: 1.5rem; }
     .cta-section { padding: 48px 0; }
   }
 </style>
 
-<script>
-  const track = document.querySelector('.carousel-track');
-  if (track) {
-    const speed = 0.8;
-    let pos = 0;
-    let half = 0;
-    let running = true;
 
-    function measure() {
-      half = track.scrollWidth / 2;
-    }
-
-    function step() {
-      if (!running) return;
-      pos += speed;
-      if (pos >= half) pos = 0;
-      track.style.transform = `translateX(-${pos}px)`;
-      requestAnimationFrame(step);
-    }
-
-    measure();
-    step();
-
-    track.closest('.carousel').addEventListener('mouseenter', () => { running = false; });
-    track.closest('.carousel').addEventListener('mouseleave', () => { running = true; step(); });
-
-    window.addEventListener('resize', measure);
-  }
-</script>

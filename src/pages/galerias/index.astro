@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GalleryCard from '../../components/GalleryCard.astro';
+import { getGalleries } from '../../lib/gallery';
+
+const galleries = await getGalleries();
+---
+
+<BaseLayout title="Galerías - ACM">
+  <section class="hero-section">
+    <div class="container">
+      <span class="section-label">Galerías</span>
+      <h1 class="page-title">Galería de Eventos</h1>
+      <p class="page-desc">Explora todos los momentos importantes de nuestra comunidad educativa</p>
+    </div>
+  </section>
+
+  <section class="gallery-section section-padding">
+    <div class="container">
+      {galleries.length > 0 ? (
+        <div class="gallery-grid">
+          {galleries.map(g => (
+            <GalleryCard
+              title={g.title}
+              slug={g.slug}
+              date={g.date}
+              description={g.description}
+              coverImage={g.coverImage}
+              imageCount={g.images.length}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state" style="padding:80px 20px;text-align:center">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <h2>No hay galerías aún</h2>
+          <p>Pronto agregaremos imágenes de nuestros eventos.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
+    color: var(--text-on-primary);
+    padding: 60px 0;
+    text-align: center;
+  }
+  .hero-section .section-label {
+    color: var(--secondary-light);
+  }
+  .hero-section .section-label::before,
+  .hero-section .section-label::after {
+    background: var(--secondary-light);
+  }
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .page-desc {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .gallery-section {
+    background: var(--bg-section);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section { padding: 40px 0; }
+    .page-title { font-size: 1.8rem; }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>
