@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import WhatsAppBtn from '../../components/WhatsAppBtn.astro';
 import { getPosts } from '../../lib/community';
 
 const posts = await getPosts();
@@ -78,6 +79,7 @@ const publishedPosts = posts.filter(p => p.status === 'published');
       )}
     </div>
   </section>
+  <WhatsAppBtn />
 </BaseLayout>
 
 <style>
