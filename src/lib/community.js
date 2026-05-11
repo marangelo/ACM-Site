@@ -1,7 +1,5 @@
-import fsp from 'node:fs/promises';
-import path from 'node:path';
-
-const DATA_PATH = path.join(process.cwd(), 'data', 'community.json');
+import { query } from './db.js';
+import { initDatabase } from './init-db.js';
 
 export function sanitizeSlug(str) {
   return str
@@ -12,95 +10,95 @@ export function sanitizeSlug(str) {
 }
 
 export async function getPosts() {
-  try {
-    const data = await fsp.readFile(DATA_PATH, 'utf-8');
-    const parsed = JSON.parse(data);
-    return parsed.posts || [];
-  } catch { return []; }
+  await initDatabase();
+  const rows = await query(
+    'SELECT * FROM posts ORDER BY date DESC'
+  );
+  return rows.map(mapPost);
 }
 
 export async function getPost(slug) {
-  const posts = await getPosts();
-  return posts.find(p => p.slug === slug) || null;
+  await initDatabase();
+  const rows = await query('SELECT * FROM posts WHERE slug = ?', [slug]);
+  return rows.length > 0 ? mapPost(rows[0]) : null;
 }
 
 export async function createPost(title, content, author, date) {
-  const posts = await getPosts();
-
+  await initDatabase();
   let slug = sanitizeSlug(title);
-  if (posts.find(p => p.slug === slug)) {
+  const existing = await query('SELECT slug FROM posts WHERE slug = ?', [slug]);
+  if (existing.length > 0) {
     slug = slug + '-' + Date.now().toString(36);
   }
 
-  const post = {
-    id: Date.now().toString(36),
-    slug,
-    title,
-    content,
-    author,
-    date,
-    status: 'draft',
-    banner: '',
-    createdAt: new Date().toISOString(),
-  };
+  const id = Date.now().toString(36);
+  const createdAt = new Date().toISOString();
 
-  posts.unshift(post);
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
-  return post;
+  await query(
+    `INSERT INTO posts (id, slug, title, content, author, date, status, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, 'draft', ?)`,
+    [id, slug, title, content, author || '', date || null, createdAt]
+  );
+
+  return { id, slug, title, content, author: author || '', date: date || null, status: 'draft', banner: '', createdAt };
 }
 
 export async function updatePost(slug, { title, content, author, date, status }) {
-  const posts = await getPosts();
-  const idx = posts.findIndex(p => p.slug === slug);
-  if (idx === -1) return null;
+  await initDatabase();
+  const fields = [];
+  const params = [];
 
-  if (title !== undefined) posts[idx].title = title;
-  if (content !== undefined) posts[idx].content = content;
-  if (author !== undefined) posts[idx].author = author;
-  if (date !== undefined) posts[idx].date = date;
-  if (status !== undefined && (status === 'draft' || status === 'published')) posts[idx].status = status;
+  if (title !== undefined) { fields.push('title = ?'); params.push(title); }
+  if (content !== undefined) { fields.push('content = ?'); params.push(content); }
+  if (author !== undefined) { fields.push('author = ?'); params.push(author); }
+  if (date !== undefined) { fields.push('date = ?'); params.push(date); }
+  if (status !== undefined && (status === 'draft' || status === 'published')) {
+    fields.push('status = ?'); params.push(status);
+  }
 
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
-  return posts[idx];
+  if (fields.length === 0) return getPost(slug);
+
+  params.push(slug);
+  await query(
+    `UPDATE posts SET ${fields.join(', ')} WHERE slug = ?`,
+    params
+  );
+
+  return getPost(slug);
 }
 
 export async function setPostBanner(slug, filename) {
-  const posts = await getPosts();
-  const idx = posts.findIndex(p => p.slug === slug);
-  if (idx === -1) return null;
-
-  posts[idx].banner = filename;
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
-  return posts[idx];
+  await initDatabase();
+  await query('UPDATE posts SET banner = ? WHERE slug = ?', [filename, slug]);
+  return getPost(slug);
 }
 
 export async function setPostStatus(slug, status) {
-  const posts = await getPosts();
-  const idx = posts.findIndex(p => p.slug === slug);
-  if (idx === -1) return null;
-
-  posts[idx].status = status;
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
-  return posts[idx];
+  await initDatabase();
+  await query("UPDATE posts SET status = ? WHERE slug = ?", [status, slug]);
+  return getPost(slug);
 }
 
 export async function deleteBanner(slug) {
-  const posts = await getPosts();
-  const idx = posts.findIndex(p => p.slug === slug);
-  if (idx === -1) return;
-
-  const bannerDir = path.join(process.cwd(), 'data', 'uploads', 'comunidad', 'banners', slug);
-  await fsp.rm(bannerDir, { recursive: true, force: true });
-
-  posts[idx].banner = '';
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts }, null, 2));
+  await initDatabase();
+  await query("UPDATE posts SET banner = '' WHERE slug = ?", [slug]);
 }
 
 export async function deletePost(slug) {
-  const posts = await getPosts();
-  const filtered = posts.filter(p => p.slug !== slug);
-  await fsp.writeFile(DATA_PATH, JSON.stringify({ posts: filtered }, null, 2));
+  await initDatabase();
+  await query('DELETE FROM posts WHERE slug = ?', [slug]);
+}
 
-  const bannerDir = path.join(process.cwd(), 'data', 'uploads', 'comunidad', 'banners', slug);
-  await fsp.rm(bannerDir, { recursive: true, force: true });
+function mapPost(row) {
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    content: row.content || '',
+    author: row.author || '',
+    date: row.date ? row.date.toISOString?.()?.split('T')[0] || row.date : '',
+    status: row.status || 'draft',
+    banner: row.banner || '',
+    createdAt: row.created_at ? new Date(row.created_at).toISOString() : '',
+  };
 }

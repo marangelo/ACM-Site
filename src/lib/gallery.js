@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises';
+import { query } from './db.js';
+import { initDatabase } from './init-db.js';
+import fsp from 'node:fs/promises';
 import path from 'node:path';
-
-const DATA_PATH = path.join(process.cwd(), 'data', 'galleries.json');
 
 export function sanitizeSlug(slug) {
   return slug
@@ -12,73 +12,94 @@ export function sanitizeSlug(slug) {
 }
 
 export async function getGalleries() {
-  try {
-    const data = await fs.readFile(DATA_PATH, 'utf-8');
-    const parsed = JSON.parse(data);
-    return parsed.galleries || [];
-  } catch { return []; }
+  await initDatabase();
+  const rows = await query('SELECT * FROM galleries ORDER BY date DESC');
+  const galleries = [];
+  for (const g of rows) {
+    const images = await query('SELECT filename FROM images WHERE gallery_slug = ? ORDER BY id ASC', [g.slug]);
+    galleries.push(mapGallery(g, images.map(i => i.filename)));
+  }
+  return galleries;
 }
 
 export async function getGallery(slug) {
-  const galleries = await getGalleries();
-  return galleries.find(g => g.slug === slug) || null;
+  await initDatabase();
+  const rows = await query('SELECT * FROM galleries WHERE slug = ?', [slug]);
+  if (rows.length === 0) return null;
+  const images = await query('SELECT filename FROM images WHERE gallery_slug = ? ORDER BY id ASC', [slug]);
+  return mapGallery(rows[0], images.map(i => i.filename));
 }
 
 export async function createGallery(title, date, description) {
-  const galleries = await getGalleries();
-  const slug = sanitizeSlug(title);
+  await initDatabase();
+  let slug = sanitizeSlug(title);
+  const existing = await query('SELECT slug FROM galleries WHERE slug = ?', [slug]);
+  if (existing.length > 0) {
+    slug = slug + '-' + Date.now().toString(36);
+  }
 
-  const newGallery = {
-    id: Date.now().toString(36),
-    slug,
-    title,
-    date,
-    description,
-    coverImage: '',
-    images: []
-  };
+  const id = Date.now().toString(36);
+  await query(
+    `INSERT INTO galleries (id, slug, title, date, description)
+     VALUES (?, ?, ?, ?, ?)`,
+    [id, slug, title, date || null, description || '']
+  );
 
-  galleries.unshift(newGallery);
-  await fs.writeFile(DATA_PATH, JSON.stringify({ galleries }, null, 2));
-  return newGallery;
+  return { id, slug, title, date: date || '', description: description || '', coverImage: '', images: [] };
 }
 
 export async function deleteGallery(slug) {
-  const galleries = await getGalleries();
-  const filtered = galleries.filter(g => g.slug !== slug);
-  await fs.writeFile(DATA_PATH, JSON.stringify({ galleries: filtered }, null, 2));
+  await initDatabase();
+  await query('DELETE FROM images WHERE gallery_slug = ?', [slug]);
+  await query('DELETE FROM galleries WHERE slug = ?', [slug]);
 
   const uploadDir = path.join(process.cwd(), 'data', 'uploads', slug);
-  await fs.rm(uploadDir, { recursive: true, force: true });
+  await fsp.rm(uploadDir, { recursive: true, force: true }).catch(() => {});
 }
 
 export async function addImages(slug, filenames) {
-  const galleries = await getGalleries();
-  const gallery = galleries.find(g => g.slug === slug);
-  if (!gallery) return null;
-
-  gallery.images.push(...filenames);
-  if (!gallery.coverImage && filenames.length > 0) {
+  await initDatabase();
+  for (const filename of filenames) {
+    await query(
+      'INSERT INTO images (gallery_slug, filename) VALUES (?, ?)',
+      [slug, filename]
+    );
+  }
+  const gallery = await getGallery(slug);
+  if (gallery && !gallery.coverImage && filenames.length > 0) {
+    await query('UPDATE galleries SET cover_image = ? WHERE slug = ?', [filenames[0], slug]);
     gallery.coverImage = filenames[0];
   }
-
-  await fs.writeFile(DATA_PATH, JSON.stringify({ galleries }, null, 2));
   return gallery;
 }
 
 export async function deleteImage(slug, filename) {
-  const galleries = await getGalleries();
-  const gallery = galleries.find(g => g.slug === slug);
-  if (!gallery) return null;
+  await initDatabase();
+  await query(
+    'DELETE FROM images WHERE gallery_slug = ? AND filename = ?',
+    [slug, filename]
+  );
 
-  gallery.images = gallery.images.filter(i => i !== filename);
-  if (gallery.coverImage === filename) {
-    gallery.coverImage = gallery.images[0] || '';
+  const gallery = await getGallery(slug);
+  if (gallery && gallery.coverImage === filename) {
+    const newCover = gallery.images.length > 0 ? gallery.images[0] : '';
+    await query('UPDATE galleries SET cover_image = ? WHERE slug = ?', [newCover, slug]);
   }
 
-  await fs.writeFile(DATA_PATH, JSON.stringify({ galleries }, null, 2));
-
   const filePath = path.join(process.cwd(), 'data', 'uploads', slug, filename);
-  await fs.rm(filePath, { force: true });
-  return gallery;
+  await fsp.rm(filePath, { force: true }).catch(() => {});
+  return getGallery(slug);
+}
+
+function mapGallery(row, imageFilenames) {
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    date: row.date ? row.date.toISOString?.()?.split('T')[0] || row.date : '',
+    description: row.description || '',
+    coverImage: row.cover_image || (imageFilenames.length > 0 ? imageFilenames[0] : ''),
+    images: imageFilenames,
+    createdAt: row.created_at ? new Date(row.created_at).toISOString() : '',
+  };
 }

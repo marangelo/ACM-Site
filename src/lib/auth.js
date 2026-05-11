@@ -1,9 +1,9 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import fsp from 'node:fs/promises';
 import path from 'node:path';
+import { query } from './db.js';
+import { initDatabase } from './init-db.js';
 
-const SESSIONS_PATH = path.join(process.cwd(), 'data', 'sessions.json');
 const SESSION_DURATION = 24 * 60 * 60 * 1000;
 
 function getAdminPassword() {
@@ -20,43 +20,36 @@ function getAdminPassword() {
   return fromEnv || fromMeta || fromFile || 'admin123';
 }
 
-async function readSessions() {
-  try {
-    const data = await fsp.readFile(SESSIONS_PATH, 'utf-8');
-    return JSON.parse(data);
-  } catch { return {}; }
-}
-
-async function writeSessions(sessions) {
-  await fsp.writeFile(SESSIONS_PATH, JSON.stringify(sessions, null, 2));
-}
-
 export async function createSession(password) {
+  await initDatabase();
   const adminPassword = getAdminPassword();
   if (password !== adminPassword) return null;
 
   const token = crypto.randomBytes(32).toString('hex');
-  const sessions = await readSessions();
-  sessions[token] = { createdAt: Date.now() };
-  await writeSessions(sessions);
+  await query(
+    'INSERT INTO sessions (token, created_at) VALUES (?, ?)',
+    [token, Date.now()]
+  );
   return token;
 }
 
 export async function validateSession(token) {
   if (!token) return false;
-  const sessions = await readSessions();
-  const session = sessions[token];
-  if (!session) return false;
-  if (Date.now() - session.createdAt > SESSION_DURATION) {
-    delete sessions[token];
-    await writeSessions(sessions);
+  await initDatabase();
+  const rows = await query(
+    'SELECT created_at FROM sessions WHERE token = ?',
+    [token]
+  );
+  if (rows.length === 0) return false;
+  const { created_at } = rows[0];
+  if (Date.now() - created_at > SESSION_DURATION) {
+    await query('DELETE FROM sessions WHERE token = ?', [token]);
     return false;
   }
   return true;
 }
 
 export async function destroySession(token) {
-  const sessions = await readSessions();
-  delete sessions[token];
-  await writeSessions(sessions);
+  await initDatabase();
+  await query('DELETE FROM sessions WHERE token = ?', [token]);
 }
