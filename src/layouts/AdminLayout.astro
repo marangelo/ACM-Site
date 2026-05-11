@@ -33,6 +33,11 @@ const { title = 'Admin - ACM' } = Astro.props;
       <slot />
     </div>
   </main>
+  <footer class="admin-footer">
+    <div class="container">
+      © 2026 Academia Cristiana Maranatha. Todos los derechos reservados.
+    </div>
+  </footer>
 </body>
 </html>
 
@@ -86,5 +91,17 @@ const { title = 'Admin - ACM' } = Astro.props;
     color: var(--primary) !important;
     background: var(--primary-glow);
   }
-  .main { padding: 32px 0; }
+  .main { padding: 32px 0; min-height: calc(100vh - 64px - 56px); }
+  .admin-footer {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+  }
+  .admin-footer .container {
+    text-align: center;
+  }
 </style>

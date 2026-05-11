@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary: #8B1A1A;
-  --primary-dark: #6B1414;
-  --primary-light: #A52A2A;
-  --primary-glow: rgba(139,26,26,0.08);
-  --secondary: #C8952A;
-  --secondary-light: #D4A017;
+  --primary: #8B1C1C;
+  --primary-dark: #7B1A1A;
+  --primary-light: #9B2020;
+  --primary-glow: rgba(139,28,28,0.08);
+  --secondary: #C8920A;
+  --secondary-light: #D4A520;
   --secondary-dark: #B8860B;
-  --secondary-glow: rgba(200,149,42,0.15);
+  --secondary-glow: rgba(200,146,10,0.15);
 
-  --bg: #F7F7F9;
-  --bg-card: #FFFFFF;
-  --bg-section: #F0F0F3;
+  --bg: #F5EFE0;
+  --bg-card: #FAF6EE;
+  --bg-section: #F0E8D8;
 
-  --text: #1E1E2A;
-  --text-secondary: #5A5A6E;
-  --text-muted: #8A8A9E;
+  --text: #111111;
+  --text-secondary: #4A4438;
+  --text-muted: #8C8474;
   --text-on-primary: #FFFFFF;
 
-  --border: #E4E4EC;
-  --border-light: #F0F0F5;
+  --border: #D0C8B8;
+  --border-light: #E0D8C8;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow: 0 4px 12px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
@@ -124,24 +124,24 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-primary {
   background: var(--primary);
   color: var(--text-on-primary);
-  box-shadow: 0 4px 14px rgba(139,26,26,0.3);
+  box-shadow: 0 4px 14px rgba(139,28,28,0.3);
 }
 .btn-primary:hover {
   background: var(--primary-dark);
   color: var(--text-on-primary);
-  box-shadow: 0 6px 20px rgba(139,26,26,0.4);
+  box-shadow: 0 6px 20px rgba(139,28,28,0.4);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background: var(--secondary);
   color: var(--text-on-primary);
-  box-shadow: 0 4px 14px rgba(200,149,42,0.3);
+  box-shadow: 0 4px 14px rgba(200,146,10,0.3);
 }
 .btn-secondary:hover {
   background: var(--secondary-dark);
   color: var(--text-on-primary);
-  box-shadow: 0 6px 20px rgba(200,149,42,0.4);
+  box-shadow: 0 6px 20px rgba(200,146,10,0.4);
   transform: translateY(-1px);
 }
 
@@ -212,7 +212,7 @@ textarea.form-input { min-height: 120px; resize: vertical; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(200,149,42,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(200,146,10,0.12) 0%, transparent 50%),
     radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
 }
 .page-hero-content { position: relative; z-index: 1; }
