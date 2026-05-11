@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppBtn from '../components/WhatsAppBtn.astro';
+---
+
+<BaseLayout title="Académico - ACM" description="Conoce nuestra oferta académica: Primaria y Secundaria en la Academia Cristiana Maranatha en Nicaragua.">
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Académico</span>
+      </nav>
+      <h1>Oferta <span class="hero-highlight">Académica</span></h1>
+      <p>Excelencia educativa desde primaria hasta secundaria, fundamentada en valores cristianos</p>
+    </div>
+  </section>
+
+  <section class="section-padding tabs-section">
+    <div class="container">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" role="tab" data-tab="primaria" aria-selected="true">Primaria (1° - 6°)</button>
+        <button class="tab-btn" role="tab" data-tab="secundaria" aria-selected="false">Secundaria (7° - 11°)</button>
+      </div>
+
+      <div id="primaria" class="tab-content active">
+        <div class="level-intro reveal">
+          <h2 class="section-title" style="margin-bottom:16px">Educación Primaria</h2>
+          <p>Nuestro programa de primaria abarca de 1° a 6° grado, brindando una formación sólida en las áreas fundamentales del conocimiento, integrando valores cristianos en cada materia.</p>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            </div>
+            <h3>Lengua y Literatura</h3>
+            <p>Comprensión lectora, redacción, ortografía y apreciación literaria.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Matemáticas</h3>
+            <p>Razonamiento lógico, aritmética, geometría y resolución de problemas.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <h3>Ciencias Sociales</h3>
+            <p>Historia, geografía, civismo e identidad nicaragüense.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Ciencias Naturales</h3>
+            <p>Biología, física y química con enfoque práctico y experimental.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-1"/><polygon points="12 15 17 21 7 21 12 15"/></svg>
+            </div>
+            <h3>Inglés</h3>
+            <p>Programa intensivo con énfasis en comunicación oral y escrita.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Formación Cristiana</h3>
+            <p>Estudios bíblicos, oración y desarrollo de valores cristianos.</p>
+          </div>
+        </div>
+
+        <div class="schedule-card reveal card" style="margin-top:32px;padding:28px">
+          <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:16px;color:var(--text)">Horario Tipo - Primaria</h3>
+          <div class="schedule-table">
+            <div class="schedule-row schedule-header">
+              <span>Actividad</span>
+              <span>Horario</span>
+            </div>
+            <div class="schedule-row">
+              <span>Ingreso / Devocional</span>
+              <span>7:00 AM - 7:30 AM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Clases</span>
+              <span>7:30 AM - 11:30 AM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Recreo</span>
+              <span>9:30 AM - 10:00 AM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Inglés / Educación Física</span>
+              <span>11:30 AM - 12:30 PM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Salida</span>
+              <span>12:30 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="secundaria" class="tab-content">
+        <div class="level-intro reveal">
+          <h2 class="section-title" style="margin-bottom:16px">Educación Secundaria</h2>
+          <p>Nuestro programa de secundaria abarca de 7° a 11° grado, preparando a los estudiantes para la educación superior con una formación académica rigurosa y valores cristianos sólidos.</p>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            </div>
+            <h3>Lengua y Literatura</h3>
+            <p>Análisis literario, redacción avanzada, gramática y oratoria.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1010 10 4 4 0 01-4-4 4 4 0 00-4-4"/><path d="M8.5 8.5a6 6 0 017 7"/></svg>
+            </div>
+            <h3>Matemáticas</h3>
+            <p>Álgebra, geometría, trigonometría y estadística.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <h3>Ciencias Sociales</h3>
+            <p>Historia universal, geografía económica, sociología y formación ciudadana.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.5 4.5l3 3L21 2l3 3-7.5 7.5-3-3L2 21l-1-1 9.5-15.5z"/></svg>
+            </div>
+            <h3>Ciencias Naturales</h3>
+            <p>Física, química, biología y ciencias ambientales con laboratorio.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--primary)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-1"/><polygon points="12 15 17 21 7 21 12 15"/></svg>
+            </div>
+            <h3>Inglés Avanzado</h3>
+            <p>Preparación para certificaciones internacionales y comunicación fluida.</p>
+          </div>
+          <div class="subject-card card reveal">
+            <div class="subject-icon" style="color:var(--secondary-dark)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>TIC</h3>
+            <p>Tecnologías de la Información, programación básica y ofimática.</p>
+          </div>
+        </div>
+
+        <div class="schedule-card reveal card" style="margin-top:32px;padding:28px">
+          <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:16px;color:var(--text)">Horario Tipo - Secundaria</h3>
+          <div class="schedule-table">
+            <div class="schedule-row schedule-header">
+              <span>Actividad</span>
+              <span>Horario</span>
+            </div>
+            <div class="schedule-row">
+              <span>Ingreso / Devocional</span>
+              <span>7:00 AM - 7:30 AM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Clases</span>
+              <span>7:30 AM - 12:00 PM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Recreo</span>
+              <span>9:30 AM - 10:00 AM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Talleres / Deportes</span>
+              <span>12:00 PM - 1:00 PM</span>
+            </div>
+            <div class="schedule-row">
+              <span>Salida</span>
+              <span>1:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="programs section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Programas Especiales</span>
+        <h2 class="section-title">Más allá del aula</h2>
+        <p class="section-desc">Programas complementarios que enriquecen la formación de nuestros estudiantes</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card card reveal">
+          <div class="program-icon" style="background:var(--primary-glow);color:var(--primary)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-1"/><polygon points="12 15 17 21 7 21 12 15"/></svg>
+          </div>
+          <h3>Inglés Intensivo</h3>
+          <p>Programa de inglés con horas semanales adicionales, laboratorio de idiomas y preparación para exámenes internacionales.</p>
+        </div>
+        <div class="program-card card reveal">
+          <div class="program-icon" style="background:var(--secondary-glow);color:var(--secondary-dark)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Tecnología Educativa</h3>
+          <p>Aulas equipadas con recursos digitales, laboratorio de computación y plataformas de aprendizaje en línea.</p>
+        </div>
+        <div class="program-card card reveal">
+          <div class="program-icon" style="background:var(--primary-glow);color:var(--primary)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Formación Cristiana</h3>
+          <p>Devocionales diarios, estudios bíblicos, capilla semanal y retiros espirituales que fortalecen la fe.</p>
+        </div>
+        <div class="program-card card reveal">
+          <div class="program-icon" style="background:var(--secondary-glow);color:var(--secondary-dark)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Deportes y Recreación</h3>
+          <p>Educación física, equipos deportivos, competencias interescolares y actividades al aire libre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="achievements section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Logros</span>
+        <h2 class="section-title">Reconocimientos Académicos</h2>
+        <p class="section-desc">El fruto de nuestro compromiso con la excelencia</p>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card card reveal">
+          <span class="achievement-year">2025</span>
+          <h3>Primer Lugar en Olimpiadas de Matemáticas</h3>
+          <p>Nuestros estudiantes obtuvieron el primer lugar a nivel departamental en las Olimpiadas de Matemáticas.</p>
+        </div>
+        <div class="achievement-card card reveal">
+          <span class="achievement-year">2024</span>
+          <h3>Certificación de Calidad Educativa</h3>
+          <p>Recibimos la certificación de calidad educativa por parte del Ministerio de Educación de Nicaragua.</p>
+        </div>
+        <div class="achievement-card card reveal">
+          <span class="achievement-year">2023</span>
+          <h3>Campeones de Debate Interescolar</h3>
+          <p>Nuestro equipo de debate se coronó campeón en la competencia nacional de debate estudiantil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppBtn />
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .page-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=1400&q=80') center/cover no-repeat; }
+  .hero-highlight { background: linear-gradient(135deg, var(--secondary-light), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .tabs-section { background: var(--bg); }
+  .level-intro { margin-bottom: 28px; }
+  .level-intro p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; max-width: 700px; }
+  .subjects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .subject-card { padding: 24px; }
+  .subject-icon { margin-bottom: 12px; }
+  .subject-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .subject-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-row { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; }
+  .schedule-header { font-weight: 700; color: var(--primary); background: var(--primary-glow); border-radius: var(--radius-xs) var(--radius-xs) 0 0; border: none; }
+  .programs { background: var(--bg-section); }
+  .programs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .program-card { padding: 28px 24px; text-align: center; }
+  .program-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .program-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .program-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+  .achievements { background: var(--bg); }
+  .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .achievement-card { padding: 28px 24px; border-left: 3px solid var(--secondary); }
+  .achievement-year { display: inline-block; padding: 3px 10px; background: var(--secondary); color: white; font-size: 0.78rem; font-weight: 700; border-radius: var(--radius-full); margin-bottom: 10px; }
+  .achievement-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .achievement-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+  @media (max-width: 1024px) {
+    .subjects-grid { grid-template-columns: repeat(2, 1fr); }
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .subjects-grid { grid-template-columns: 1fr; }
+    .programs-grid, .achievements-grid { grid-template-columns: 1fr; }
+  }
+</style>

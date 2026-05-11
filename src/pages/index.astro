@@ -8,25 +8,24 @@ const galleries = await getGalleries();
 const latestGalleries = galleries.slice(0, 3);
 ---
 
-<BaseLayout title="ACM - Academia Cristiana Maranatha">
+<BaseLayout title="ACM - Academia Cristiana Maranatha" description="Academia Cristiana Maranatha — formando estudiantes con excelencia académica y valores cristianos en Nicaragua.">
   <section class="hero">
     <div class="hero-bg">
       <div class="hero-bg-shape hero-bg-shape--1"></div>
       <div class="hero-bg-shape hero-bg-shape--2"></div>
-      <div class="hero-bg-shape hero-bg-shape--3"></div>
     </div>
     <div class="container hero-content">
       <div class="hero-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Bienvenidos a la ACM
+        Fundado en 1995
       </div>
       <h1 class="hero-title">
         Academia Cristiana <br/><span class="hero-highlight">Maranatha</span>
       </h1>
-      <p class="hero-subtitle">Formando líderes con excelencia académica y valores cristianos</p>
+      <p class="hero-subtitle">"Juntos formamos corazones con valores y una fe que transforma"</p>
       <div class="hero-actions">
-        <a href="#galerias" class="btn btn-secondary btn-lg">
-          Ver Galerías
+        <a href="/admisiones" class="btn btn-secondary btn-lg">
+          Inscríbete
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="/nosotros" class="btn btn-outline btn-lg hero-btn-outline">Conócenos</a>
@@ -39,40 +38,174 @@ const latestGalleries = galleries.slice(0, 3);
     </div>
   </section>
 
-  <section class="features section-padding">
+  
+
+  <section class="mission-summary section-padding">
     <div class="container">
-      <div class="features-grid">
-        <div class="feature-card card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <div class="mission-grid">
+        <div class="mission-shield reveal">
+          <div class="shield-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h3>Galerías de Eventos</h3>
-          <p>Revive los momentos especiales de nuestra comunidad educativa a través de nuestras galerías fotográficas.</p>
         </div>
-        <div class="feature-card card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <div class="mission-text reveal">
+          <span class="section-label">Nuestra Misión</span>
+          <h2 class="section-title">Formando líderes con valores cristianos</h2>
+          <p>En la Academia Cristiana Maranatha, nuestra misión es formar estudiantes con excelencia académica y sólidos principios cristianos, preparándolos para ser líderes que transformen su comunidad con fe, virtud, excelencia y patriotismo.</p>
+          <div class="mission-values">
+            <span class="value-pill">Fe</span>
+            <span class="value-pill">Virtud</span>
+            <span class="value-pill">Excelencia</span>
+            <span class="value-pill">Patriotismo</span>
           </div>
-          <h3>Excelencia Académica</h3>
-          <p>Comprometidos con la formación integral de nuestros estudiantes desde preescolar hasta 8vo grado.</p>
-        </div>
-        <div class="feature-card card">
-          <div class="feature-icon-wrapper">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <h3>Valores Cristianos</h3>
-          <p>Fomentamos principios y valores que forman el carácter de nuestros alumnos para la vida.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="galerias" class="galleries section-padding">
+  
+
+  <section class="quick-access section-padding">
     <div class="container">
       <div class="section-heading">
-        <span class="section-label">Galerías</span>
-        <h2 class="section-title">Galería de Eventos</h2>
-        <p class="section-desc">Explora los momentos más importantes de nuestra comunidad educativa</p>
+        <span class="section-label">Accesos Rápidos</span>
+        <h2 class="section-title">Descubre nuestra comunidad educativa</h2>
+      </div>
+      <div class="quick-grid">
+        <a href="/academico" class="quick-card reveal card card-gold-border">
+          <div class="quick-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Calendario Académico</h3>
+          <p>Fechas importantes, períodos de clases y actividades del año escolar</p>
+          <span class="quick-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/contacto" class="quick-card reveal card card-gold-border">
+          <div class="quick-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Portal de Padres</h3>
+          <p>Comunícate con nosotros y recibe información sobre el progreso de tu hijo</p>
+          <span class="quick-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/admisiones" class="quick-card reveal card card-gold-border">
+          <div class="quick-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3>Inscripciones</h3>
+          <p>Conoce el proceso de admisión y los requisitos para formar parte de la ACM</p>
+          <span class="quick-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/comunidad" class="quick-card reveal card card-gold-border">
+          <div class="quick-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Noticias</h3>
+          <p>Mantente al día con los eventos, logros y actividades de nuestra comunidad</p>
+          <span class="quick-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a href="/contacto" class="quick-card reveal card card-gold-border">
+          <div class="quick-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Contacto</h3>
+          <p>Estamos para servirte. Escríbenos y te responderemos a la brevedad</p>
+          <span class="quick-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <span class="stat-number">29+</span>
+          <span class="stat-label">Años de Historia</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Estudiantes</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Docentes</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Niveles Educativos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-news section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Comunidad</span>
+        <h2 class="section-title">Últimas Noticias</h2>
+        <p class="section-desc">Entérate de lo que está sucediendo en nuestra comunidad educativa</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card card reveal">
+          <div class="news-image">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80" alt="Estudiantes en clase" loading="lazy" />
+            <span class="news-badge">Académico</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date">15 de marzo, 2026</span>
+            <h3>Inicio del ciclo escolar 2026</h3>
+            <p>Damos la bienvenida a nuestros estudiantes para un nuevo año de aprendizaje y crecimiento espiritual.</p>
+            <a href="/comunidad" class="news-link">Leer más</a>
+          </div>
+        </article>
+        <article class="news-card card reveal">
+          <div class="news-image">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=600&q=80" alt="Evento deportivo" loading="lazy" />
+            <span class="news-badge">Deportes</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date">28 de febrero, 2026</span>
+            <h3>Juegos Interescolares 2026</h3>
+            <p>Nuestros estudiantes participaron con gran entusiasmo en las competencias deportivas interescolares.</p>
+            <a href="/comunidad" class="news-link">Leer más</a>
+          </div>
+        </article>
+        <article class="news-card card reveal">
+          <div class="news-image">
+            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80" alt="Evento cultural" loading="lazy" />
+            <span class="news-badge">Cultural</span>
+          </div>
+          <div class="news-body">
+            <span class="news-date">10 de febrero, 2026</span>
+            <h3>Festival de la Cultura Nicaragüense</h3>
+            <p>Celebramos nuestras tradiciones con presentaciones artísticas, bailes folclóricos y gastronomía típica.</p>
+            <a href="/comunidad" class="news-link">Leer más</a>
+          </div>
+        </article>
+      </div>
+      <div class="news-cta">
+        <a href="/comunidad" class="btn btn-primary">Ver todas las noticias</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-gallery section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Galería</span>
+        <h2 className="section-title">Momentos que nos inspiran</h2>
+        <p className="section-desc">Capturamos los mejores momentos de nuestra vida escolar</p>
       </div>
 
       {galleries.length > 0 ? (
@@ -107,14 +240,77 @@ const latestGalleries = galleries.slice(0, 3);
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="cta-pattern"></div>
-    <div class="container cta-content">
-      <span class="cta-badge">Contacto</span>
-      <h2>¿Tienes fotos de un evento?</h2>
-      <p>Comparte con nosotros los momentos especiales de nuestros estudiantes.</p>
-      <a href="/contacto" class="btn btn-secondary btn-lg">
-        Contáctanos
+  <section class="testimonials section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Testimonios</span>
+        <h2 class="section-title">Lo que dicen nuestros padres</h2>
+        <p class="section-desc">El orgullo de nuestras familias es nuestra mejor carta de presentación</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal card card-gold-left">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"La ACM ha sido una bendición para nuestra familia. La formación académica y espiritual que reciben mis hijos es excepcional."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#7B1A1A">M</div>
+            <div>
+              <strong>María G.</strong>
+              <span>Madre de familia</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal card card-gold-left">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"Los valores cristianos que enseñan en la ACM han fortalecido el carácter de mis hijos. Estamos muy agradecidos."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#C8920A">C</div>
+            <div>
+              <strong>Carlos R.</strong>
+              <span>Padre de familia</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal card card-gold-left">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C8920A" stroke="#C8920A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"La excelencia académica combinada con la formación en valores hace de la ACM la mejor opción educativa en Nicaragua."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#7B1A1A">A</div>
+            <div>
+              <strong>Ana P.</strong>
+              <span>Madre de familia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-banner-content">
+      <div class="cta-text reveal">
+        <h2>¡Forma parte de la familia Maranatha!</h2>
+        <p>Inscripciones abiertas para el ciclo escolar 2026. Cupos limitados.</p>
+      </div>
+      <a href="/admisiones" class="btn btn-secondary btn-lg">
+        Solicitar Información
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
@@ -132,234 +328,198 @@ const latestGalleries = galleries.slice(0, 3);
     overflow: hidden;
   }
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
   }
   .hero-bg-shape {
-    position: absolute;
-    border-radius: 50%;
+    position: absolute; border-radius: 50%;
   }
   .hero-bg-shape--1 {
-    top: -30%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
+    top: -30%; right: -10%; width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(200,146,10,0.12) 0%, transparent 70%);
   }
   .hero-bg-shape--2 {
-    bottom: -20%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
+    bottom: -20%; left: -5%; width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
   }
-  .hero-bg-shape--3 {
-    top: 20%;
-    left: 40%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(200,149,42,0.06) 0%, transparent 60%);
-  }
-
   .hero-content {
-    position: relative;
-    text-align: center;
-    padding: 40px 0 70px;
-    z-index: 1;
+    position: relative; text-align: center; padding: 40px 0 70px; z-index: 1;
   }
-
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     color: rgba(255,255,255,0.85);
-    padding: 8px 20px;
-    border-radius: var(--radius-full);
-    font-size: 0.82rem;
-    font-weight: 500;
-    margin-bottom: 28px;
-    letter-spacing: 0.3px;
+    padding: 8px 20px; border-radius: var(--radius-full);
+    font-size: 0.82rem; font-weight: 500;
+    margin-bottom: 28px; letter-spacing: 0.3px;
   }
-
   .hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 16px;
-    line-height: 1.1;
-    letter-spacing: -1px;
+    font-size: 3.5rem; font-weight: 900; margin-bottom: 16px;
+    line-height: 1.1; letter-spacing: -1px;
+    font-family: var(--font-heading);
   }
   .hero-highlight {
     background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-
   .hero-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    font-weight: 400;
-    max-width: 560px;
-    margin: 0 auto 36px;
-    line-height: 1.6;
+    font-size: 1.2rem; opacity: 0.8; font-weight: 400;
+    max-width: 560px; margin: 0 auto 36px; line-height: 1.6;
+    font-style: italic;
   }
-
   .hero-actions {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
   }
   .hero-btn-outline {
-    border-color: rgba(255,255,255,0.35) !important;
-    color: white !important;
+    border-color: rgba(255,255,255,0.35) !important; color: white !important;
   }
   .hero-btn-outline:hover {
-    border-color: white !important;
-    background: rgba(255,255,255,0.1) !important;
-    transform: translateY(-2px);
+    border-color: white !important; background: rgba(255,255,255,0.1) !important; transform: translateY(-2px);
+  }
+  .hero-wave { line-height: 0; margin-bottom: -2px; }
+  .hero-wave svg { width: 100%; height: 80px; display: block; }
+
+  .stats-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--text-on-primary); padding: 60px 0;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;
+  }
+  .stat { display: flex; flex-direction: column; gap: 8px; padding: 20px 16px; position: relative; }
+  .stat + .stat::before {
+    content: ''; position: absolute; left: 0; top: 10%; height: 80%;
+    width: 1px; background: rgba(255,255,255,0.1);
+  }
+  .stat-number { font-size: 2.8rem; font-weight: 900; color: var(--secondary-light); line-height: 1; }
+  .stat-label { font-size: 0.9rem; opacity: 0.8; font-weight: 500; }
+
+  .mission-summary { background: var(--bg); }
+  .mission-grid {
+    display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center;
+  }
+  .mission-shield {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--secondary-light); flex-shrink: 0;
+  }
+  .shield-icon svg { width: 56px; height: 56px; }
+  .mission-text p {
+    font-size: 1.02rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;
+  }
+  .mission-values { display: flex; gap: 8px; flex-wrap: wrap; }
+  .value-pill {
+    padding: 6px 16px; border-radius: var(--radius-full);
+    background: var(--secondary-glow); color: var(--secondary-dark);
+    font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
   }
 
-  .hero-wave {
-    line-height: 0;
-    margin-bottom: -2px;
+  .quick-access { background: var(--bg-section); }
+  .quick-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
-  .hero-wave svg {
-    width: 100%;
-    height: 80px;
-    display: block;
+  .quick-card {
+    padding: 32px 24px; text-align: center; text-decoration: none; display: flex;
+    flex-direction: column; align-items: center; position: relative;
   }
-
-  .features {
-    background: var(--bg);
-  }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  .feature-card {
-    padding: 36px 28px;
-    text-align: center;
-    border-top: 3px solid var(--primary);
-    position: relative;
-  }
-  .feature-icon-wrapper {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: var(--primary-glow);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
+  .quick-icon {
+    width: 60px; height: 60px; border-radius: 14px;
+    background: var(--primary-glow); color: var(--primary);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
     transition: all var(--transition);
   }
-  .feature-card:hover .feature-icon-wrapper {
-    background: var(--primary);
-    color: white;
-    transform: scale(1.05);
+  .quick-card:hover .quick-icon {
+    background: var(--primary); color: white; transform: scale(1.05);
   }
-  .feature-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--text);
+  .quick-card h3 {
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text);
   }
-  .feature-card p {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+  .quick-card p {
+    font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;
   }
+  .quick-arrow { color: var(--secondary); transition: transform var(--transition); }
+  .quick-card:hover .quick-arrow { transform: translateX(4px); }
 
-  .galleries {
-    background: var(--bg-section);
-  }
-  .section-heading {
-    text-align: center;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .community-news { background: var(--bg); }
+  .section-heading { text-align: center; margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; }
   .section-heading .section-title { margin-bottom: 8px; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .news-card { overflow: hidden; }
+  .news-image { position: relative; height: 200px; overflow: hidden; }
+  .news-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .news-card:hover .news-image img { transform: scale(1.06); }
+  .news-badge {
+    position: absolute; top: 12px; left: 12px;
+    padding: 4px 12px; background: var(--primary); color: white;
+    font-size: 0.75rem; font-weight: 600; border-radius: var(--radius-full);
+  }
+  .news-body { padding: 20px 24px 24px; }
+  .news-date { font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 6px; }
+  .news-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .news-body p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+  .news-link { font-weight: 600; font-size: 0.85rem; color: var(--primary); }
+  .news-link:hover { color: var(--primary-dark); }
+  .news-cta { text-align: center; margin-top: 36px; }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .gallery-cta {
-    text-align: center;
-    margin-top: 36px;
-  }
+  .quick-gallery { background: var(--bg-section); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .gallery-cta { text-align: center; margin-top: 36px; }
 
-  .cta-section {
-    background: linear-gradient(135deg, var(--primary) 0%, #4a0e0e 100%);
-    color: var(--text-on-primary);
-    padding: 72px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  .testimonials { background: var(--bg); }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { padding: 28px; }
+  .testimonial-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+  .testimonial-card p {
+    font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
+    font-style: italic; margin-bottom: 20px; flex: 1;
   }
-  .cta-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 25% 50%, rgba(200,149,42,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 75% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; color: white;
+    font-weight: 700; font-size: 1rem; flex-shrink: 0;
   }
-  .cta-content { position: relative; z-index: 1; }
-  .cta-badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--secondary-light);
-    margin-bottom: 12px;
+  .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--text); }
+  .testimonial-author span { font-size: 0.8rem; color: var(--text-muted); }
+
+  .cta-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 60px 0;
   }
-  .cta-content h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 12px;
+  .cta-banner-content {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
   }
-  .cta-content p {
-    font-size: 1.1rem;
-    opacity: 0.85;
-    margin-bottom: 28px;
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
+  .cta-text h2 {
+    font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 8px;
   }
+  .cta-text p { opacity: 0.85; font-size: 1.05rem; color: white; }
 
   .empty-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: var(--border-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-    color: var(--text-muted);
+    width: 64px; height: 64px; border-radius: 50%; background: var(--border-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; color: var(--text-muted);
   }
 
+  @media (max-width: 1024px) {
+    .gallery-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 768px) {
     .hero { padding: 60px 0 0; }
     .hero-title { font-size: 2.2rem; }
     .hero-content { padding: 24px 0 40px; }
     .hero-wave svg { height: 40px; }
-    .features-grid { grid-template-columns: 1fr; gap: 20px; }
-    .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
-    .cta-content h2 { font-size: 1.5rem; }
-    .cta-section { padding: 48px 0; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stat + .stat::before { display: none; }
+    .stat-number { font-size: 2.2rem; }
+    .mission-grid { grid-template-columns: 1fr; text-align: center; }
+    .mission-shield { margin: 0 auto; }
+    .mission-values { justify-content: center; }
+    .quick-grid { grid-template-columns: 1fr; gap: 16px; }
+    .gallery-grid, .news-grid, .testimonial-grid { grid-template-columns: 1fr; gap: 16px; }
+    .cta-banner-content { flex-direction: column; text-align: center; }
+    .cta-text h2 { font-size: 1.4rem; }
   }
 </style>
-
-

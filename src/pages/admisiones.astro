@@ -1,0 +1,484 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppBtn from '../components/WhatsAppBtn.astro';
+---
+
+<BaseLayout title="Admisiones - ACM" description="Proceso de admisión, requisitos, costos y formulario de solicitud para la Academia Cristiana Maranatha en Nicaragua.">
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Admisiones</span>
+      </nav>
+      <h1>Admisiones</h1>
+      <p>Descubre cómo formar parte de la familia Maranatha</p>
+    </div>
+  </section>
+
+  <section class="section-padding process-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Proceso</span>
+        <h2 class="section-title">5 pasos para inscribirte</h2>
+        <p class="section-desc">Te guiamos en cada etapa del proceso de admisión</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Solicitud de Información</h3>
+            <p>Completa el formulario de solicitud con los datos del estudiante y la familia.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Entrevista</h3>
+            <p>Agendamos una entrevista con los padres y el estudiante para conocerlos mejor.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Evaluación</h3>
+            <p>El estudiante realiza una evaluación diagnóstica para determinar el grado correspondiente.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Entrega de Documentos</h3>
+            <p>Presenta la documentación requerida según el nivel educativo.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Matrícula</h3>
+            <p>Realiza el pago de matrícula y formaliza la inscripción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="requirements section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Requisitos</span>
+        <h2 class="section-title">Documentos necesarios</h2>
+        <p class="section-desc">Revisa qué documentos necesitas según el nivel educativo</p>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item reveal">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Primaria (1° - 6° grado)</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul style="padding-left:20px;display:flex;flex-direction:column;gap:6px">
+                <li>Certificado de nacimiento (original y copia)</li>
+                <li>Certificado de notas del año anterior</li>
+                <li>Cédula de identidad del estudiante (si aplica)</li>
+                <li>Cédula de identidad de los padres o tutores</li>
+                <li>2 fotografías tamaño carnet</li>
+                <li>Carnet de vacunas actualizado</li>
+                <li>Llenar solicitud de admisión</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item reveal">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Secundaria (7° - 11° grado)</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <ul style="padding-left:20px;display:flex;flex-direction:column;gap:6px">
+                <li>Certificado de nacimiento (original y copia)</li>
+                <li>Récord académico o certificado de notas de los últimos 2 años</li>
+                <li>Cédula de identidad del estudiante</li>
+                <li>Cédula de identidad de los padres o tutores</li>
+                <li>2 fotografías tamaño carnet</li>
+                <li>Carta de conducta del centro anterior</li>
+                <li>Llenar solicitud de admisión</li>
+                <li>Entrevista con el coordinador de secundaria</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="costs section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Costos</span>
+        <h2 class="section-title">Inversión Educativa</h2>
+        <p class="section-desc">Conoce nuestros costos y opciones de pago para el ciclo escolar 2026</p>
+      </div>
+      <div class="costs-table-wrapper reveal card">
+        <table class="costs-table">
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Primaria</th>
+              <th>Secundaria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Matrícula</td>
+              <td>C$ 1,500</td>
+              <td>C$ 2,000</td>
+            </tr>
+            <tr>
+              <td>Mensualidad</td>
+              <td>C$ 1,200</td>
+              <td>C$ 1,500</td>
+            </tr>
+            <tr>
+              <td>Cuota de materiales</td>
+              <td>C$ 800</td>
+              <td>C$ 1,000</td>
+            </tr>
+            <tr>
+              <td>Seguro escolar (anual)</td>
+              <td>C$ 500</td>
+              <td>C$ 500</td>
+            </tr>
+            <tr>
+              <td>Uniforme completo</td>
+              <td>C$ 1,200</td>
+              <td>C$ 1,500</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="costs-note">* Los precios están expresados en Córdobas (C$). Consulta por nuestros planes de pago y descuentos por hermanos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Solicitud</span>
+        <h2 class="section-title">Solicitud de Información</h2>
+        <p class="section-desc">Déjanos tus datos y te contactaremos para brindarte más información</p>
+      </div>
+      <div class="form-wrapper card reveal">
+        <form id="admission-form" class="form">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="parent-name">Nombre del padre/madre *</label>
+              <input type="text" id="parent-name" name="parent-name" class="form-input" required placeholder="Nombre completo" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono *</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required placeholder="(505) 0000-0000" />
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" name="email" class="form-input" required placeholder="tu@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="student-name">Nombre del estudiante *</label>
+              <input type="text" id="student-name" name="student-name" class="form-input" required placeholder="Nombre completo" />
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="grade">Grado al que aspira *</label>
+              <select id="grade" name="grade" class="form-input form-select" required>
+                <option value="">Seleccionar grado</option>
+                <option value="1">1° Primaria</option>
+                <option value="2">2° Primaria</option>
+                <option value="3">3° Primaria</option>
+                <option value="4">4° Primaria</option>
+                <option value="5">5° Primaria</option>
+                <option value="6">6° Primaria</option>
+                <option value="7">7° Secundaria</option>
+                <option value="8">8° Secundaria</option>
+                <option value="9">9° Secundaria</option>
+                <option value="10">10° Secundaria</option>
+                <option value="11">11° Secundaria</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="level">Nivel *</label>
+              <select id="level" name="level" class="form-input form-select" required>
+                <option value="">Seleccionar nivel</option>
+                <option value="primaria">Primaria</option>
+                <option value="secundaria">Secundaria</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="referral">¿Cómo nos conociste?</label>
+            <select id="referral" name="referral" class="form-input form-select">
+              <option value="">Seleccionar</option>
+              <option value="internet">Internet / Redes Sociales</option>
+              <option value="referido">Referido de otro padre</option>
+              <option value="evento">Evento / Feria educativa</option>
+              <option value="cerca">Vivo cerca del colegio</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje (opcional)</label>
+            <textarea id="message" name="message" class="form-input" rows="4" placeholder="¿Alguna pregunta o comentario?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+            Enviar Solicitud
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+        <div id="form-success" class="message message-success" style="display:none;margin-top:20px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-right:6px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          ¡Solicitud enviada con éxito! Te contactaremos pronto.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scholarships section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Becas</span>
+        <h2 class="section-title">Programa de Becas</h2>
+        <p class="section-desc">Creemos en el talento y el esfuerzo. Conoce nuestras opciones de apoyo educativo</p>
+      </div>
+      <div class="scholarship-grid">
+        <div class="scholarship-card card reveal card-gold-border">
+          <div class="scholarship-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Beca de Excelencia Académica</h3>
+          <p>Para estudiantes con rendimiento académico sobresaliente. Cubre hasta el 50% de la mensualidad.</p>
+          <ul>
+            <li>Promedio mínimo de 90</li>
+            <li>Carta de recomendación</li>
+            <li>Entrevista con el comité de becas</li>
+          </ul>
+        </div>
+        <div class="scholarship-card card reveal card-gold-border">
+          <div class="scholarship-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Beca de Liderazgo</h3>
+          <p>Para estudiantes destacados en servicio comunitario y liderazgo estudiantil.</p>
+          <ul>
+            <li>Participación comprobada en actividades</li>
+            <li>Carta de la iglesia o comunidad</li>
+            <li>Ensayo personal</li>
+          </ul>
+        </div>
+        <div class="scholarship-card card reveal card-gold-border">
+          <div class="scholarship-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Beca Familiar</h3>
+          <p>Descuento especial para familias con múltiples hijos inscritos en la institución.</p>
+          <ul>
+            <li>2 hijos: 10% de descuento</li>
+            <li>3 hijos: 15% de descuento</li>
+            <li>4+ hijos: 20% de descuento</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <form id="scholarship-form" class="card" style="padding:28px;text-align:left;max-width:500px;margin:0 auto">
+          <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--text);text-align:center">Solicitud de Beca</h3>
+          <div class="form-group">
+            <label for="scholarship-name">Nombre completo *</label>
+            <input type="text" id="scholarship-name" class="form-input" required placeholder="Nombre completo" />
+          </div>
+          <div class="form-group">
+            <label for="scholarship-email">Correo electrónico *</label>
+            <input type="email" id="scholarship-email" class="form-input" required placeholder="tu@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="scholarship-type">Tipo de beca *</label>
+            <select id="scholarship-type" class="form-input form-select" required>
+              <option value="">Seleccionar</option>
+              <option value="academica">Excelencia Académica</option>
+              <option value="liderazgo">Liderazgo</option>
+              <option value="familiar">Familiar</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-secondary" style="width:100%;justify-content:center">Solicitar Beca</button>
+          <div id="scholarship-success" class="message message-success" style="display:none;margin-top:16px">Solicitud de beca enviada con éxito.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-desc">Resolvemos tus dudas sobre el proceso de admisión</p>
+      </div>
+      <div class="faq-list" style="max-width:700px;margin:0 auto">
+        <div class="accordion">
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Cuándo inician las inscripciones?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Las inscripciones para el ciclo escolar 2026 abren en enero y se extienden hasta marzo. Sin embargo, recibimos solicitudes durante todo el año sujeto a disponibilidad de cupos.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Cuál es la edad mínima para ingresar a primaria?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Para ingresar a 1° de primaria, el estudiante debe tener 6 años cumplidos al 31 de marzo del año en curso.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Ofrecen transporte escolar?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Sí, contamos con servicio de transporte escolar para diversas rutas de la ciudad. Consulta con nuestra oficina de admisiones para verificar la disponibilidad en tu zona.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Cómo puedo solicitar una beca?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Puedes solicitar una beca completando el formulario de solicitud de beca en esta misma página. El comité de becas evaluará tu solicitud y te contactará para continuar con el proceso.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Imparten educación religiosa?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Sí, la formación cristiana es parte fundamental de nuestro currículo. Incluye estudios bíblicos, devocionales diarios, capilla semanal y retiros espirituales.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Cuentan con programa de inglés?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Sí, ofrecemos un programa intensivo de inglés desde primaria hasta secundaria, con laboratorio de idiomas y preparación para certificaciones internacionales.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Qué actividades extracurriculares ofrecen?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Ofrecemos deportes (fútbol, baloncesto, voleibol), club de música, coro, arte, robótica educativa, club de debate y servicio comunitario.</div>
+            </div>
+          </div>
+          <div class="accordion-item reveal">
+            <button class="accordion-header" aria-expanded="false">
+              <span>¿Tienen programa de comedor escolar?</span>
+              <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">Sí, contamos con servicio de comedor que ofrece almuerzos nutritivos y balanceados. El costo está incluido en la cuota de materiales.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppBtn />
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.accordion-item');
+        const isActive = item.classList.toggle('active');
+        header.setAttribute('aria-expanded', isActive);
+      });
+    });
+
+    const form = document.getElementById('admission-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const required = form.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(f => { if (!f.value.trim()) valid = false; });
+        if (valid) {
+          document.getElementById('form-success').style.display = 'block';
+          form.reset();
+        } else {
+          alert('Por favor completa todos los campos requeridos.');
+        }
+      });
+    }
+
+    const schForm = document.getElementById('scholarship-form');
+    if (schForm) {
+      schForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('scholarship-success').style.display = 'block';
+        schForm.reset();
+      });
+    }
+  });
+</script>
+
+<style>
+  .page-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80') center/cover no-repeat; }
+  .hero-highlight { background: linear-gradient(135deg, var(--secondary-light), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .process-section { background: var(--bg); }
+  .process-steps { display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin: 0 auto; }
+  .process-step { display: flex; align-items: flex-start; gap: 20px; }
+  .step-number { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; flex-shrink: 0; }
+  .step-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+  .step-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+  .requirements { background: var(--bg-section); }
+  .costs { background: var(--bg); }
+  .costs-table-wrapper { padding: 4px; overflow-x: auto; }
+  .costs-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+  .costs-table th { background: var(--primary); color: var(--text-on-primary); padding: 14px 20px; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .costs-table td { padding: 14px 20px; border-bottom: 1px solid var(--border-light); }
+  .costs-table tr:last-child td { border-bottom: none; }
+  .costs-table tbody tr:hover { background: #f8f8fc; }
+  .costs-note { font-size: 0.82rem; color: var(--text-muted); margin-top: 16px; font-style: italic; padding: 0 4px; }
+  .form-section { background: var(--bg-section); }
+  .form-wrapper { padding: 36px; max-width: 700px; margin: 0 auto; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8A9E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 44px; cursor: pointer; }
+  .scholarships { background: var(--bg); }
+  .scholarship-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .scholarship-card { padding: 28px 24px; }
+  .scholarship-icon { color: var(--secondary); margin-bottom: 12px; }
+  .scholarship-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .scholarship-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+  .scholarship-card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--text-muted); }
+  .faq { background: var(--bg-section); }
+
+  @media (max-width: 768px) {
+    .form-row-2 { grid-template-columns: 1fr; }
+    .scholarship-grid { grid-template-columns: 1fr; }
+    .form-wrapper { padding: 24px; }
+  }
+</style>

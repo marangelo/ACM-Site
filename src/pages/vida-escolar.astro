@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppBtn from '../components/WhatsAppBtn.astro';
+import GalleryCard from '../components/GalleryCard.astro';
+import { getGalleries } from '../lib/gallery';
+
+const galleries = await getGalleries();
+---
+
+<BaseLayout title="Vida Escolar - ACM" description="Descubre la vida estudiantil en la Academia Cristiana Maranatha: deportes, clubs, noticias, logros y vida pastoral en Nicaragua.">
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Vida Escolar</span>
+      </nav>
+      <h1>Vida <span class="hero-highlight">Escolar</span></h1>
+      <p>Descubre la experiencia completa de ser parte de la ACM</p>
+    </div>
+  </section>
+
+  <section class="gallery-showcase section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Galería</span>
+        <h2 class="section-title">Nuestra Vida en Imágenes</h2>
+        <p class="section-desc">Los momentos que hacen especial a la comunidad Maranatha</p>
+      </div>
+      {galleries.length > 0 ? (
+        <>
+          <div class="showcase-grid">
+            {galleries.slice(0, 6).map(g => (
+              <GalleryCard title={g.title} slug={g.slug} date={g.date} description={g.description} coverImage={g.coverImage} imageCount={g.images.length} />
+            ))}
+          </div>
+          {galleries.length > 6 && (
+            <div style="text-align:center;margin-top:28px">
+              <a href="/galerias" class="btn btn-primary">Ver todas las galerías</a>
+            </div>
+          )}
+        </>
+      ) : (
+        <div class="empty-state" style="text-align:center;padding:60px 20px">
+          <h2>Pronto tendremos fotos</h2>
+          <p>Estamos preparando nuestra galería de imágenes.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="sports section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Deportes y Clubs</span>
+        <h2 class="section-title">Actividades Estudiantiles</h2>
+        <p class="section-desc">Desarrollamos el cuerpo, la mente y el espíritu a través de diversas actividades</p>
+      </div>
+      <div class="activities-grid">
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=600&q=80" alt="Fútbol" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Fútbol</h3>
+            <p>Entrenamiento y competencias interescolares.</p>
+            <div class="activity-meta"><span>Lun - Jue 2:00 PM</span><span>Prof. Carlos Ruiz</span></div>
+          </div>
+        </div>
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1519861531473-9200265628bf?w=600&q=80" alt="Baloncesto" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Baloncesto</h3>
+            <p>Desarrollo de habilidades y trabajo en equipo.</p>
+            <div class="activity-meta"><span>Mar - Jue 2:00 PM</span><span>Prof. Mendoza</span></div>
+          </div>
+        </div>
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&q=80" alt="Club de Música" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Coro y Música</h3>
+            <p>Taller de canto, guitarra y piano.</p>
+            <div class="activity-meta"><span>Mié - Vie 2:00 PM</span><span>Prof. García</span></div>
+          </div>
+        </div>
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?w=600&q=80" alt="Arte" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Arte y Manualidades</h3>
+            <p>Pintura, dibujo y creatividad.</p>
+            <div class="activity-meta"><span>Mar - Jue 2:00 PM</span><span>Prof. Martínez</span></div>
+          </div>
+        </div>
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&q=80" alt="Robótica" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Robótica Educativa</h3>
+            <p>Programación y robótica para jóvenes.</p>
+            <div class="activity-meta"><span>Lun - Mié 2:00 PM</span><span>Ing. López</span></div>
+          </div>
+        </div>
+        <div class="activity-card card reveal">
+          <div class="activity-image">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80" alt="Debate" loading="lazy" />
+          </div>
+          <div class="activity-body">
+            <h3>Club de Debate</h3>
+            <p>Oratoria, argumentación y liderazgo.</p>
+            <div class="activity-meta"><span>Vie 2:00 PM</span><span>Lic. Pérez</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="achievements-wall section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Logros</span>
+        <h2 class="section-title">Muro de Reconocimientos</h2>
+        <p class="section-desc">Celebramos los éxitos de nuestros estudiantes</p>
+      </div>
+      <div class="wall-grid">
+        <div class="wall-card card reveal">
+          <div class="wall-medal">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Olimpiadas de Matemáticas</h3>
+          <p><strong>Ana García</strong> — 1° lugar nacional</p>
+          <span class="wall-year">2025</span>
+        </div>
+        <div class="wall-card card reveal">
+          <div class="wall-medal" style="color:var(--secondary)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Concurso de Oratoria</h3>
+          <p><strong>Luis Martínez</strong> — Campeón departamental</p>
+          <span class="wall-year">2025</span>
+        </div>
+        <div class="wall-card card reveal">
+          <div class="wall-medal" style="color:var(--primary)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Festival de Talentos</h3>
+          <p><strong>Coro ACM</strong> — Mención honorífica</p>
+          <span class="wall-year">2024</span>
+        </div>
+        <div class="wall-card card reveal">
+          <div class="wall-medal" style="color:var(--secondary)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3>Competencia de Robótica</h3>
+          <p><strong>Equipo ACM Tech</strong> — 2° lugar nacional</p>
+          <span class="wall-year">2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pastoral section-padding">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label">Vida Pastoral</span>
+        <h2 class="section-title">Formación Espiritual</h2>
+        <p class="section-desc">Alimentamos el espíritu y fortalecemos la fe de nuestra comunidad</p>
+      </div>
+      <div class="pastoral-grid">
+        <div class="pastoral-card card reveal">
+          <div class="pastoral-icon" style="background:var(--primary-glow);color:var(--primary)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Capilla Semanal</h3>
+          <p>Servicios de capilla cada viernes con mensajes inspiradores y alabanzas.</p>
+        </div>
+        <div class="pastoral-card card reveal">
+          <div class="pastoral-icon" style="background:var(--secondary-glow);color:var(--secondary-dark)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Retiros Espirituales</h3>
+          <p>Retiros anuales para fortalecer la fe y la convivencia cristiana.</p>
+        </div>
+        <div class="pastoral-card card reveal">
+          <div class="pastoral-icon" style="background:var(--primary-glow);color:var(--primary)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Versículo Institucional</h3>
+          <p>"Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él." — Proverbios 22:6</p>
+        </div>
+        <div class="pastoral-card card reveal">
+          <div class="pastoral-icon" style="background:var(--secondary-glow);color:var(--secondary-dark)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h3>Grupos de Oración</h3>
+          <p>Grupos de oración para padres, estudiantes y docentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppBtn />
+</BaseLayout>
+
+<style>
+  .page-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1400&q=80') center/cover no-repeat; }
+  .hero-highlight { background: linear-gradient(135deg, var(--secondary-light), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gallery-showcase { background: var(--bg); }
+  .showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .sports { background: var(--bg-section); }
+  .activities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .activity-card { overflow: hidden; }
+  .activity-image { height: 180px; overflow: hidden; }
+  .activity-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .activity-card:hover .activity-image img { transform: scale(1.06); }
+  .activity-body { padding: 20px 24px 24px; }
+  .activity-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .activity-body p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+  .activity-meta { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 10px; }
+  .achievements-wall { background: var(--bg); }
+  .wall-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .wall-card { padding: 24px; text-align: center; border-top: 3px solid var(--secondary); }
+  .wall-medal { margin-bottom: 12px; color: var(--secondary); }
+  .wall-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .wall-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+  .wall-year { display: inline-block; padding: 3px 10px; background: var(--primary); color: white; font-size: 0.75rem; font-weight: 700; border-radius: var(--radius-full); }
+  .pastoral { background: var(--bg-section); }
+  .pastoral-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .pastoral-card { padding: 28px 24px; text-align: center; border-left: 3px solid var(--secondary); background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .pastoral-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+  .pastoral-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .pastoral-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+  @media (max-width: 1024px) {
+    .showcase-grid, .activities-grid { grid-template-columns: repeat(2, 1fr); }
+    .wall-grid, .pastoral-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .showcase-grid, .activities-grid, .wall-grid, .pastoral-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -5,9 +5,11 @@ import '../styles/global.css';
 
 export interface Props {
   title?: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title = 'ACM - Academia Cristiana Maranatha' } = Astro.props;
+const { title = 'ACM - Academia Cristiana Maranatha', description = 'Academia Cristiana Maranatha — formando estudiantes con excelencia académica y valores cristianos en Nicaragua.', ogImage = '/og-image.jpg' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,7 +19,13 @@ const { title = 'ACM - Academia Cristiana Maranatha' } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="description" content="Galería de eventos de la Academia Cristiana Maranatha" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_NI" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
   <Header />
@@ -28,8 +36,20 @@ const { title = 'ACM - Academia Cristiana Maranatha' } = Astro.props;
 </body>
 </html>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+</script>
+
 <style>
-  .main {
-    flex: 1;
-  }
+  .main { flex: 1; }
 </style>

@@ -1,21 +1,32 @@
 ---
 import Logo from './Logo.astro';
-const path = Astro.url.pathname;
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/academico', label: 'Académico' },
+  { href: '/admisiones', label: 'Admisiones' },
+  { href: '/vida-escolar', label: 'Vida Escolar' },
+  { href: '/galerias', label: 'Galerías' },
+  { href: '/contacto', label: 'Contacto' },
+];
 ---
 
 <header class="header" id="header">
   <div class="container header-inner">
     <Logo />
-    <button class="hamburger" id="hamburger" aria-label="Menú">
+    <button class="hamburger" id="hamburger" aria-label="Menú de navegación" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <nav class="nav" id="nav-menu">
-      <a href="/" class={"nav-link" + (path === '/' ? ' active' : '')}>Inicio</a>
-      <a href="/#galerias" class="nav-link">Galerías</a>
-      <a href="/comunidad" class={"nav-link" + (path === '/comunidad' ? ' active' : '')}>Comunidad</a>
-      <a href="/nosotros" class={"nav-link" + (path === '/nosotros' ? ' active' : '')}>Nosotros</a>
-      <a href="/contacto" class={"nav-link" + (path === '/contacto' ? ' active' : '')}>Contacto</a>
-      <a href="/admin" class="nav-link nav-admin">Administrar</a>
+    <nav class="nav" id="nav-menu" role="navigation" aria-label="Menú principal">
+      {links.map(l => (
+        <a href={l.href} class={"nav-link" + (currentPath === l.href ? ' active' : '') + (l.highlight ? ' nav-highlight' : '')}>{l.label}</a>
+      ))}
+      <a href="/admisiones" class="btn btn-sm btn-primary nav-cta">
+        Inscríbete
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </nav>
   </div>
 </header>
@@ -25,9 +36,10 @@ const path = Astro.url.pathname;
   const navMenu = document.getElementById('nav-menu');
 
   hamburger.addEventListener('click', () => {
+    const isActive = navMenu.classList.toggle('active');
     hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
     document.body.classList.toggle('no-scroll');
+    hamburger.setAttribute('aria-expanded', isActive);
   });
 
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -35,6 +47,7 @@ const path = Astro.url.pathname;
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
       document.body.classList.remove('no-scroll');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 </script>
@@ -83,18 +96,18 @@ const path = Astro.url.pathname;
   .nav {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
 
   .nav-link {
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: var(--radius-xs);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     transition: all var(--transition);
     color: var(--text-secondary);
     text-decoration: none;
-    position: relative;
+    white-space: nowrap;
   }
   .nav-link:hover {
     color: var(--primary);
@@ -106,18 +119,15 @@ const path = Astro.url.pathname;
     background: var(--primary-glow);
   }
 
-  .nav-admin {
-    background: var(--secondary);
-    color: var(--text-on-primary) !important;
-    font-weight: 600;
+  .nav-cta {
     margin-left: 8px;
-  }
-  .nav-admin:hover {
-    background: var(--secondary-dark) !important;
-    color: var(--text-on-primary) !important;
+    padding: 8px 18px !important;
+    font-size: 0.85rem !important;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .hamburger { display: flex; }
 
     .nav {
@@ -132,16 +142,20 @@ const path = Astro.url.pathname;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       z-index: 5;
     }
     .nav.active { display: flex; }
 
     .nav-link {
-      font-size: 1.2rem;
-      padding: 14px 32px;
-      width: auto;
+      font-size: 1.15rem;
+      padding: 12px 32px;
     }
-    .nav-admin { margin-left: 0; }
+    .nav-cta {
+      margin-left: 0;
+      margin-top: 12px;
+      padding: 12px 32px !important;
+      font-size: 1rem !important;
+    }
   }
 </style>
