@@ -9,3 +9,33 @@ services:
       - '3000:3000'
     command: ["npm","run","dev","--","--host"]
 
+  db:
+    container_name: cn_acm_db
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: db_acm
+      MYSQL_USER: usr_acm
+      MYSQL_PASSWORD: pwd_acm
+      MYSQL_ROOT_PASSWORD: pwd_acm
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: cn_phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.2
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: pwd_acm
+      UPLOAD_LIMIT: 300M
+    ports:
+      - "82:80"
+    depends_on:
+      - db
+

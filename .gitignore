@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .env
+db_data/
 data/sessions.json
 data/messages.json
 data/uploads/*
